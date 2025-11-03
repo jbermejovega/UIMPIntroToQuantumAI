@@ -2,31 +2,33 @@
 
 # Jara Juana Bermejo Vega
 
-#  1 Table of Contents
-
 # 1 Table of Contents
 
-- [1 Table of Contents](#table-of-contents)
-- [2 About](#about)
-- [3 Preliminaries: setting up your computer](#preliminaries:-setting-up-your-computer)
-  * [3.1 Linux](#linux)
-  * [3.2 MacOS](#macos)
-  * [3.3 Windows](#windows)
-    + [3.3.1 Package Managers](#package-managers)
-  * [3.4 Development environment Visual Studio Code](#development-environment-visual-studio-code)
-    + [3.4.1 VS Code Command Palette](#vs-code-command-palette)
-    + [3.4.2 Default Terminal](#default-terminal)
-    + [3.4.3 VS Code Extensions](#vs-code-extensions)
-  * [3.5 Python](#python)
-    + [3.5.1 Anaconda (Miniconda)](#anaconda-(miniconda))
-    + [3.5.2 Python Environments](#python-environments)
-  * [3.6 Version control with Git](#version-control-with-git)
-- [4 Quantum Linear Solvers on QisKit](#quantum-linear-solvers-on-qiskit)
-  * [4.1 Setting up our Qiskit Environment](#setting-up-our-qiskit-environment)
-  * [4.2 Installing Qiskit and Python packages](#installing-qiskit-and-python-packages)
-    + [4.2.1 Installing QisKit](#installing-qiskit)
-  * [4.3 Setting up IJupyter kernels](#setting-up-ijupyter-kernels)
-- [5 Try the tutorials](#try-the-tutorials)
+- [1 Table of Contents](#1-table-of-contents)
+- [2 About](#2-about)
+- [3 Preliminaries: setting up your computer](#3-preliminaries-setting-up-your-computer)
+   * [3.1 Linux](#31-linux)
+   * [3.2 MacOS](#32-macos)
+   * [3.3 Windows](#33-windows)
+      + [3.3.1 Package Managers](#331-package-managers)
+   * [3.4 Development environment Visual Studio Code](#34-development-environment-visual-studio-code)
+      + [3.4.1 VS Code Command Palette](#341-vs-code-command-palette)
+      + [3.4.2 Default Terminal](#342-default-terminal)
+      + [3.4.3 VS Code Extensions](#343-vs-code-extensions)
+   * [3.5 Python](#35-python)
+      + [3.5.1 Anaconda (Miniconda)](#351-anaconda-miniconda)
+      + [3.5.2 Python Environments](#352-python-environments)
+   * [3.6 Version control with Git](#36-version-control-with-git)
+- [4 Installing Python packages, Jupyter and QisKit](#4-installing-python-packages-jupyter-and-qiskit)
+   * [4.1 Create a Python environment](#41-create-a-python-environment)
+   * [4.2 Installing Python packages](#42-installing-python-packages)
+   * [4.3 Setting up IJupyter kernels](#43-setting-up-ijupyter-kernels)
+   * [4.4. Python tools for scientific computing](#44-python-tools-for-scientific-computing)
+- [5 Try the tutorials](#5-try-the-tutorials)
+- [6 Python for Scientific computing](#6-python-for-scientific-computing)
+- [6.1 Randomized algorithms and concentration inequalities](#61-randomized-algorithms-and-concentration-inequalities)
+- [EXERCISE](#exercise)
+- [MATERIALS](#materials)
 
 
 #  2 About
@@ -188,7 +190,7 @@ We will use IPython’s (Interactive Python) iPyKernel as Jupyter kernel in Jupy
 
   ```pip install matplotlib pylatexenc ipywidgets```
 
-  ## 4.4. Python tools for scientific computing
+## 4.4. Python tools for scientific computing
 
 We recommend Python as a high-level language for common scientific tasks and coding exercises during the course. Python is an interpreted language, which currently provides fairly efficient open-source libraries for a wide range of problems such as numpy, scipy and and simpy. 
 
