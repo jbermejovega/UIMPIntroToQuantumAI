@@ -2,13 +2,14 @@
 
 # Jara Juana Bermejo Vega
 
-## SIGIL STACK NORMALIZATION
+## PACADOC FIRST-USER NORMALIZATION
 
 This repository has been normalized as a replay-safe educational render sector within the SIGIL / PACAPDG ecosystem.
 
-See:
+Start here:
 
-- `docs/sigil/SIGIL_STACK_NORMALIZATION.md`
+- [`PACADOC.md`](PACADOC.md) — first-user / student landing guide
+- `docs/sigil/SIGIL_STACK_NORMALIZATION.md` — SIGIL stack normalization notes
 
 Core invariant:
 
@@ -33,6 +34,17 @@ Meaning:
 - and Qiskit dependency sectors
 
 may differ locally while preserving replay-stable educational identity.
+
+## First student rule
+
+```text
+one error
+one change
+one rerun
+one note
+```
+
+Do not debug by changing many things at once. Record the exact error message, notebook, cell number, Python version, and environment name.
 
 ---
 
