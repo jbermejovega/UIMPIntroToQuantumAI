@@ -1,0 +1,147 @@
+{
+  "schema_id": "KONNEKTIA_QQUAPP_QQUAPPI_MOOG_MOOGI_KUIR_QUAZRIS_COURSE_CONNECTOR_SUPERLATTICE_V1",
+  "version": "1.0.0",
+  "mode": "source_bound_connector_network",
+  "authority": {
+    "zero_source": "jbermejovega/sigilbook",
+    "public_projection": "jbermejovega/UIMPIntroToQuantumAI",
+    "connector_effects_executed": false
+  },
+  "layers": [
+    {
+      "id": "KONNEKTIA",
+      "role": "typed connector relation network",
+      "operations": [
+        "DESCRIBE",
+        "READ",
+        "VALIDATE",
+        "PLAN"
+      ],
+      "mutates_external_systems": false
+    },
+    {
+      "id": "QQUAPP",
+      "role": "external application boundary",
+      "preserves": [
+        "source identity",
+        "provenance",
+        "typed capability"
+      ],
+      "authority_transport": false
+    },
+    {
+      "id": "QQUAPPI",
+      "role": "typed interface/compatibility witness between QQUAPP projections",
+      "project_local": true,
+      "identity_collapse": false
+    },
+    {
+      "id": "MOOG",
+      "role": "signal/action projection",
+      "effects": "planned_only"
+    },
+    {
+      "id": "MOOGI",
+      "role": "higher-order reconstruction/integration view over MOOG projections",
+      "effects": "none"
+    },
+    {
+      "id": "KUIR",
+      "role": "typed orchestration interface",
+      "effect_gate_required": true
+    },
+    {
+      "id": "QUAZRIS",
+      "role": "dual/external SIGIL projection",
+      "primal_dual_projection": true,
+      "semantic_authority": false
+    },
+    {
+      "id": "CLICK42",
+      "role": "total CLI selector/localizer",
+      "runtime": "local user-space CLI"
+    }
+  ],
+  "grammar": {
+    "kind": "context_free_factorized_connector_grammar",
+    "productions": [
+      "route -> source connector surface",
+      "source -> agenda | calendar | ccms | notebook | repository",
+      "connector -> KONNEKTIA QQUAPP QQUAPPI MOOG MOOGI KUIR QUAZRIS",
+      "surface -> CLICK42 | WML | SQLite | ICS | external_connector_plan"
+    ],
+    "note": "grammar describes route construction only; it does not grant effect authority"
+  },
+  "localizers": {
+    "agenda": {
+      "source": "ccms/paca_agenda_calendar_qml_2026_2027.json",
+      "route": [
+        "PACA_AGENDA",
+        "KONNEKTIA",
+        "QQUAPP",
+        "KUIR",
+        "QUAZRIS",
+        "CLICK42"
+      ],
+      "output": "human-readable agenda"
+    },
+    "calendar": {
+      "source": "ccms/paca_agenda_calendar_qml_2026_2027.json",
+      "route": [
+        "PACA_CALENDAR",
+        "KONNEKTIA",
+        "QQUAPP",
+        "QQUAPPI",
+        "MOOG",
+        "KUIR",
+        "QUAZRIS",
+        "CLICK42"
+      ],
+      "output": "temporal projection / ICS"
+    },
+    "browser": {
+      "source": "site/course.wml.json",
+      "route": [
+        "WML",
+        "KONNEKTIA",
+        "QQUAPP",
+        "KUIR",
+        "QUAZRIS"
+      ],
+      "output": "browser projection"
+    },
+    "knowledge": {
+      "source": "ccms/paca_docencia_superlattice_v1.json",
+      "route": [
+        "CCMS",
+        "KONNEKTIA",
+        "QQUAPP",
+        "MOOGI",
+        "KUIR",
+        "QUAZRIS"
+      ],
+      "output": "SQLite/replay projection"
+    }
+  },
+  "schedule_binding": {
+    "carrier": "PACA_AGENDA_CALENDAR_QML_2026_2027_V1",
+    "timezone": "Europe/Madrid",
+    "event_count": 20,
+    "unresolved_events": [
+      "qml-2027-01-29-1600"
+    ]
+  },
+  "invariants": [
+    "connector != kernel",
+    "agenda_state != calendar_view",
+    "calendar_view != external_write",
+    "MOOG_plan != effect",
+    "MOOGI_reconstruction != source_authority",
+    "KUIR_orchestrates != KUIR_executes_external_effect",
+    "QUAZRIS_projection != semantic_identity",
+    "CLICK42_selects_route != CLICK42_grants_authority",
+    "identity_transport=false",
+    "authority_transport=false",
+    "plural_collapse=false"
+  ]
+}
