@@ -1,0 +1,288 @@
+{
+  "schema": "SIGIL_COURSE_NAVIGATION_V1",
+  "version": "1.0.0",
+  "authority": {
+    "internal": "KRONE_COURSE_NAVIGATION",
+    "interface": "KUIR_CLOPEN_NAVIGATION",
+    "projection": "WML",
+    "source_of_truth": "ccms/sigil_course_navigation_v1.json"
+  },
+  "geometric_poetry": {
+    "atlas": "repository",
+    "chart": "document or executable artifact",
+    "point": "heading anchor or artifact entry",
+    "seam": "typed hyperlink between charts",
+    "local_section": "resolved destination",
+    "obstruction": "missing file, missing heading anchor, or invalid local asset",
+    "rule": "localize first; select the narrowest tool capable of resolving the local section"
+  },
+  "localizers": {
+    "landing": {
+      "facet": "BROWSER",
+      "interface": "WML",
+      "applies_to": [
+        "course landing",
+        "course map",
+        "browser projection"
+      ]
+    },
+    "legacy_setup": {
+      "facet": "ZELDA",
+      "interface": "MARKDOWN_ANCHOR",
+      "applies_to": [
+        "setup documentation",
+        "historical course guide"
+      ]
+    },
+    "tutorial": {
+      "facet": "CLICK",
+      "interface": "NOTEBOOK",
+      "applies_to": [
+        "executable tutorials",
+        "codebooks"
+      ]
+    },
+    "runtime": {
+      "facet": "KIT",
+      "interface": "CLI",
+      "applies_to": [
+        "environment",
+        "runtime",
+        "installation"
+      ]
+    },
+    "types": {
+      "facet": "CLIT",
+      "interface": "KUIR",
+      "applies_to": [
+        "typed interfaces",
+        "CCMS",
+        "polykategory"
+      ]
+    },
+    "research": {
+      "facet": "QIT",
+      "interface": "QUNO",
+      "applies_to": [
+        "TFG",
+        "TFM",
+        "PhD research sync"
+      ]
+    }
+  },
+  "compatibility": {
+    "root_readme": "README.md",
+    "legacy_guide": "docs/legacy/README_2025_FULL.md",
+    "preserve_historical_root_anchors": true,
+    "legacy_assets_are_repo_root_relative": true
+  },
+  "routes": [
+    {
+      "id": "toc",
+      "label": "1 Table of Contents",
+      "root_anchor": "1-table-of-contents",
+      "target": "README.md#1-table-of-contents",
+      "localizer": "landing"
+    },
+    {
+      "id": "about",
+      "label": "2 About",
+      "root_anchor": "2-about",
+      "target": "docs/legacy/README_2025_FULL.md#2-about",
+      "localizer": "legacy_setup"
+    },
+    {
+      "id": "preliminaries",
+      "label": "3 Preliminaries: setting up your computer",
+      "root_anchor": "3-preliminaries-setting-up-your-computer",
+      "target": "docs/legacy/README_2025_FULL.md#3-preliminaries-setting-up-your-computer",
+      "localizer": "legacy_setup"
+    },
+    {
+      "id": "linux",
+      "label": "3.1 Linux",
+      "root_anchor": "31-linux",
+      "target": "docs/legacy/README_2025_FULL.md#31-linux",
+      "localizer": "legacy_setup"
+    },
+    {
+      "id": "macos",
+      "label": "3.2 MacOS",
+      "root_anchor": "32-macos",
+      "target": "docs/legacy/README_2025_FULL.md#32-macos",
+      "localizer": "legacy_setup"
+    },
+    {
+      "id": "windows",
+      "label": "3.3 Windows",
+      "root_anchor": "33-windows",
+      "target": "docs/legacy/README_2025_FULL.md#33-windows",
+      "localizer": "legacy_setup"
+    },
+    {
+      "id": "package-managers",
+      "label": "3.3.1 Package Managers",
+      "root_anchor": "331-package-managers",
+      "target": "docs/legacy/README_2025_FULL.md#331-package-managers",
+      "localizer": "legacy_setup"
+    },
+    {
+      "id": "vscode",
+      "label": "3.4 Development environment Visual Studio Code",
+      "root_anchor": "34-development-environment-visual-studio-code",
+      "target": "docs/legacy/README_2025_FULL.md#34-development-environment-visual-studio-code",
+      "localizer": "legacy_setup"
+    },
+    {
+      "id": "vscode-palette",
+      "label": "3.4.1 VS Code Command Palette",
+      "root_anchor": "341-vs-code-command-palette",
+      "target": "docs/legacy/README_2025_FULL.md#341-vs-code-command-palette",
+      "localizer": "legacy_setup"
+    },
+    {
+      "id": "default-terminal",
+      "label": "3.4.2 Default Terminal",
+      "root_anchor": "342-default-terminal",
+      "target": "docs/legacy/README_2025_FULL.md#342-default-terminal",
+      "localizer": "legacy_setup"
+    },
+    {
+      "id": "vscode-extensions",
+      "label": "3.4.3 VS Code Extensions",
+      "root_anchor": "343-vs-code-extensions",
+      "target": "docs/legacy/README_2025_FULL.md#343-vs-code-extensions",
+      "localizer": "legacy_setup"
+    },
+    {
+      "id": "python",
+      "label": "3.5 Python",
+      "root_anchor": "35-python",
+      "target": "docs/legacy/README_2025_FULL.md#35-python",
+      "localizer": "legacy_setup"
+    },
+    {
+      "id": "miniconda",
+      "label": "3.5.1 Anaconda (Miniconda)",
+      "root_anchor": "351-anaconda-miniconda",
+      "target": "docs/legacy/README_2025_FULL.md#351-anaconda-miniconda",
+      "localizer": "legacy_setup"
+    },
+    {
+      "id": "python-envs",
+      "label": "3.5.2 Python Environments",
+      "root_anchor": "352-python-environments",
+      "target": "docs/legacy/README_2025_FULL.md#352-python-environments",
+      "localizer": "legacy_setup"
+    },
+    {
+      "id": "git",
+      "label": "3.6 Version control with Git",
+      "root_anchor": "36-version-control-with-git",
+      "target": "docs/legacy/README_2025_FULL.md#36-version-control-with-git",
+      "localizer": "legacy_setup"
+    },
+    {
+      "id": "install-python-qiskit",
+      "label": "4 Installing Python packages, Jupyter and QisKit",
+      "root_anchor": "4-installing-python-packages-jupyter-and-qiskit",
+      "target": "docs/legacy/README_2025_FULL.md#4-installing-python-packages-jupyter-and-qiskit",
+      "localizer": "runtime"
+    },
+    {
+      "id": "create-env",
+      "label": "4.1 Create a Python environment",
+      "root_anchor": "41-create-a-python-environment",
+      "target": "docs/legacy/README_2025_FULL.md#41-create-a-python-environment",
+      "localizer": "runtime"
+    },
+    {
+      "id": "install-packages",
+      "label": "4.2 Installing Python packages",
+      "root_anchor": "42-installing-python-packages",
+      "target": "docs/legacy/README_2025_FULL.md#42-installing-python-packages",
+      "localizer": "runtime"
+    },
+    {
+      "id": "jupyter-kernels",
+      "label": "4.3 Setting up IJupyter kernels",
+      "root_anchor": "43-setting-up-ijupyter-kernels",
+      "target": "docs/legacy/README_2025_FULL.md#43-setting-up-ijupyter-kernels",
+      "localizer": "runtime"
+    },
+    {
+      "id": "scientific-python-tools",
+      "label": "4.4. Python tools for scientific computing",
+      "root_anchor": "44-python-tools-for-scientific-computing",
+      "target": "docs/legacy/README_2025_FULL.md#44-python-tools-for-scientific-computing",
+      "localizer": "runtime"
+    },
+    {
+      "id": "try-tutorials",
+      "label": "5 Try the tutorials",
+      "root_anchor": "5-try-the-tutorials",
+      "target": "docs/legacy/README_2025_FULL.md#5-try-the-tutorials",
+      "localizer": "tutorial"
+    },
+    {
+      "id": "scientific-computing",
+      "label": "6 Python for Scientific computing",
+      "root_anchor": "6-python-for-scientific-computing",
+      "target": "docs/legacy/README_2025_FULL.md#6-python-for-scientific-computing",
+      "localizer": "tutorial"
+    },
+    {
+      "id": "randomized-algorithms",
+      "label": "6.1 Randomized algorithms and concentration inequalities",
+      "root_anchor": "61-randomized-algorithms-and-concentration-inequalities",
+      "target": "docs/legacy/README_2025_FULL.md#61-randomized-algorithms-and-concentration-inequalities",
+      "localizer": "tutorial"
+    },
+    {
+      "id": "exercise",
+      "label": "EXERCISE",
+      "root_anchor": "exercise",
+      "target": "docs/legacy/README_2025_FULL.md#exercise",
+      "localizer": "tutorial"
+    },
+    {
+      "id": "materials",
+      "label": "MATERIALS",
+      "root_anchor": "materials",
+      "target": "docs/legacy/README_2025_FULL.md#materials",
+      "localizer": "landing"
+    },
+    {
+      "id": "lecture-notes-2026",
+      "label": "Juani QML lecture notes 2026",
+      "target": "docs/teaching/JUANI_QML_LECTURE_NOTES_ABRIDGED_2026.md",
+      "localizer": "landing"
+    },
+    {
+      "id": "ising-codebook",
+      "label": "2026 Ising duality codebook",
+      "target": "tutorials/practica-2026-ising-duality/ising_duality_codebook.ipynb",
+      "localizer": "tutorial"
+    },
+    {
+      "id": "research-sync",
+      "label": "TFG / TFM / PhD research sync",
+      "target": "docs/teaching/RESEARCH_SYNC_TFG_TFM_PHD_V1.md",
+      "localizer": "research"
+    },
+    {
+      "id": "ccms",
+      "label": "CCMS source",
+      "target": "ccms/paca_docencia_superlattice_v1.json",
+      "localizer": "types"
+    }
+  ],
+  "rulezero": [
+    "historical anchor compatibility != duplicate semantic source",
+    "root README is a landing/redirect chart",
+    "legacy guide remains the historical setup chart",
+    "WML is a projection, not canonical authority",
+    "localization selects interface; it does not change content identity",
+    "broken seam => preworkflow failure"
+  ]
+}
