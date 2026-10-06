@@ -282,7 +282,9 @@
       "kuramoto_sector",
       "jaranian_kuramoto_lift",
       "rainbow_order_parameters",
-      "ccms_tool_facet"
+      "ccms_tool_facet",
+      "kuir_quazris_binding",
+      "moogi_resynthesis_trace"
     ],
     "polyarrows": [
       {
@@ -357,6 +359,18 @@
           "rainbow_order_parameters"
         ],
         "witness": "xi=x+theta, eta=x-theta coordinate rewrite with explicit self/cross couplings"
+      },
+      {
+        "id": "source_bind_resynthesize",
+        "inputs": [
+          "sigilbook_zero_source",
+          "public_release_projection"
+        ],
+        "outputs": [
+          "kuir_quazris_binding",
+          "moogi_resynthesis_trace"
+        ],
+        "witness": "typed binding with explicit provenance, dual trace and learning error"
       }
     ],
     "pseudofunctorial_maps": [
@@ -446,7 +460,8 @@
     "QIT": "inspect QUNO plural contexts without identity collapse",
     "GIT": "inspect repository/project graph, lineage and release projections",
     "JAURIA": "inspect 1D/2D swarmalator primitives and Kuramoto lifts",
-    "BROWSER": "project the live CCMS knowledge base into navigable WML/web views"
+    "BROWSER": "project the live CCMS knowledge base into navigable WML/web views",
+    "BIND": "inspect source binding/debinding/rebinding/rekontra-binding facet"
   },
   "sources": [
     {
@@ -482,5 +497,44 @@
       "id": "nonidentical-swarmalators-2022",
       "citation": "Yoon et al., Physical Review Letters 129, 208002 (2022)"
     }
-  ]
+  ],
+  "binding_facet": {
+    "schema": "PACA_CCMS_KUIR_QUAZRIS_SOURCE_BINDING_V1",
+    "implementation": "ccms/kuir_quazris_bindings.py",
+    "operations": [
+      "BIND",
+      "DEBIND",
+      "REBIND",
+      "REKONTRA_BIND"
+    ],
+    "semi_operations": [
+      "SEMI_FUSION",
+      "SEMI_JOIN",
+      "SEMI_MEET",
+      "SEMI_PUSHOUT",
+      "SEMI_PULLBACK"
+    ],
+    "laws": [
+      "composition != identity merge",
+      "projection != authority transport",
+      "debind does not rewrite source history",
+      "rekontra-bind is a dual presentation, not Git history rewind"
+    ],
+    "api_picture": {
+      "internal": "KRONE internal API",
+      "interface": "KUIR",
+      "external": "QUAZRIS external SIGIL API",
+      "shape": "primal/dual lattice"
+    },
+    "resynthesis": {
+      "stages": [
+        "observe",
+        "integrate",
+        "learn",
+        "exact_resynthesize"
+      ],
+      "error_explicit": true,
+      "prediction_is_authority": false
+    }
+  }
 }
