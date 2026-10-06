@@ -235,6 +235,12 @@ def print_port(data: dict[str, Any], name: str) -> None:
         print("Landing page: site/index.html")
         print("CCMS source: ccms/paca_docencia_superlattice_v1.json")
         print("The web view is a projection, not a second source of truth.")
+    elif name == "BIND":
+        print("Implementation: ccms/kuir_quazris_bindings.py")
+        print("Operations: BIND / DEBIND / REBIND / REKONTRA_BIND")
+        print("Semi-operations require explicit witnesses and preserve source identities.")
+        print("QUAZRIS external API is a KUIR projection of the KRONE internal API.")
+        print("Learning path: observe -> integrate -> learn -> exact_resynthesize(error explicit)")
 
 
 def print_cocycle(data: dict[str, Any]) -> None:
@@ -284,7 +290,7 @@ def main() -> int:
     sub.add_parser("notebook-smoke")
     sub.add_parser("cocycle")
     sub.add_parser("preworkflow")
-    for port in ("click", "clit", "zelda", "poles", "kit", "qit", "git", "jauria", "browser"):
+    for port in ("click", "clit", "zelda", "poles", "kit", "qit", "git", "jauria", "browser", "bind"):
         sub.add_parser(port)
 
     dbp = sub.add_parser("db-build")
@@ -309,7 +315,7 @@ def main() -> int:
         print("notebook smoke passed")
     elif args.command == "cocycle":
         print_cocycle(data)
-    elif args.command in {"click", "clit", "zelda", "poles", "kit", "qit", "git", "jauria", "browser"}:
+    elif args.command in {"click", "clit", "zelda", "poles", "kit", "qit", "git", "jauria", "browser", "bind"}:
         print_port(data, args.command)
     elif args.command == "db-build":
         materialize_db(data, args.output)
