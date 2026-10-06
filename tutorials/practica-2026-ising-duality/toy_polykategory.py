@@ -262,3 +262,176 @@ def self_dual_closed_subtheory_example() -> dict[str, Any]:
         "closed_under_named_duality": True,
         "claim_scope": "toy course schema / Aubry-André duality example",
     }
+
+
+class SwarmalatorState(str, Enum):
+    STATIC_SYNC = "static_sync"
+    STATIC_ASYNC = "static_async"
+    STATIC_PHASE_WAVE = "static_phase_wave"
+    SPLINTERED_PHASE_WAVE = "splintered_phase_wave"
+    ACTIVE_PHASE_WAVE = "active_phase_wave"
+    ASYNC_1D = "async_1d"
+    PHASE_WAVE_1D = "phase_wave_1d"
+    MIXED_1D = "mixed_1d"
+    SYNC_1D = "sync_1d"
+
+
+@dataclass(frozen=True)
+class JaranianJauria:
+    """Primitive swarmalator carrier with coupled spatial and phase degrees of freedom."""
+
+    position: np.ndarray
+    phase: np.ndarray
+    J: float
+    K: float
+    provenance: tuple[str, ...] = ("O'Keeffe-Hong-Strogatz-2017",)
+
+    def __post_init__(self) -> None:
+        x = np.asarray(self.position, dtype=float)
+        th = np.asarray(self.phase, dtype=float)
+        if x.ndim != 2 or x.shape[1] != 2:
+            raise ValueError("position must have shape (N, 2)")
+        if th.shape != (x.shape[0],):
+            raise ValueError("phase must have shape (N,)")
+        object.__setattr__(self, "position", x)
+        object.__setattr__(self, "phase", th)
+
+
+def swarmalator_2d_rhs(
+    position: np.ndarray,
+    phase: np.ndarray,
+    *,
+    J: float = 1.0,
+    K: float = 0.0,
+    eps: float = 1e-9,
+) -> tuple[np.ndarray, np.ndarray]:
+    """Canonical 2D swarmalator flow used in the codebook.
+
+    dx_i/dt = mean_j [ r_ji/|r_ji| * (1 + J cos(theta_j-theta_i))
+                       - r_ji/|r_ji|^2 ]
+    dtheta_i/dt = K * mean_j [ sin(theta_j-theta_i) / |r_ji| ]
+
+    Self terms are excluded. This is the standard pedagogical form of the
+    O'Keeffe-Hong-Strogatz model; variants use other attraction/repulsion
+    kernels.
+    """
+    x = np.asarray(position, dtype=float)
+    th = np.asarray(phase, dtype=float)
+    if x.ndim != 2 or x.shape[1] != 2 or th.shape != (x.shape[0],):
+        raise ValueError("expected position (N,2) and phase (N,)")
+    n = x.shape[0]
+    dx = np.zeros_like(x)
+    dth = np.zeros_like(th)
+    for i in range(n):
+        r = x - x[i]
+        dist = np.linalg.norm(r, axis=1)
+        mask = np.arange(n) != i
+        rr = r[mask]
+        dd = np.maximum(dist[mask], eps)
+        dphi = th[mask] - th[i]
+        attraction = rr / dd[:, None] * (1.0 + J * np.cos(dphi))[:, None]
+        repulsion = rr / (dd[:, None] ** 2)
+        dx[i] = np.mean(attraction - repulsion, axis=0)
+        dth[i] = K * np.mean(np.sin(dphi) / dd)
+    return dx, dth
+
+
+def swarmalator_1d_rhs(
+    position_angle: np.ndarray,
+    phase: np.ndarray,
+    *,
+    nu: np.ndarray | None = None,
+    omega: np.ndarray | None = None,
+    J: float = 1.0,
+    K: float = 1.0,
+) -> tuple[np.ndarray, np.ndarray]:
+    """1D ring swarmalator model.
+
+    xdot_i = nu_i + J/N sum_j sin(x_j-x_i) cos(theta_j-theta_i)
+    thdot_i = omega_i + K/N sum_j sin(theta_j-theta_i) cos(x_j-x_i)
+    """
+    x = np.asarray(position_angle, dtype=float)
+    th = np.asarray(phase, dtype=float)
+    if x.shape != th.shape:
+        raise ValueError("position_angle and phase must have the same shape")
+    n = x.size
+    nu_arr = np.zeros(n) if nu is None else np.asarray(nu, dtype=float)
+    om_arr = np.zeros(n) if omega is None else np.asarray(omega, dtype=float)
+    if nu_arr.shape != x.shape or om_arr.shape != x.shape:
+        raise ValueError("natural-frequency arrays must match position shape")
+    dx = np.empty(n, dtype=float)
+    dth = np.empty(n, dtype=float)
+    for i in range(n):
+        dx_i = x - x[i]
+        dphi = th - th[i]
+        dx[i] = nu_arr[i] + J * np.mean(np.sin(dx_i) * np.cos(dphi))
+        dth[i] = om_arr[i] + K * np.mean(np.sin(dphi) * np.cos(dx_i))
+    return dx, dth
+
+
+def swarmalator_sum_difference(
+    position_angle: np.ndarray,
+    phase: np.ndarray,
+) -> tuple[np.ndarray, np.ndarray]:
+    """Return xi=x+theta and eta=x-theta coordinates on the ring."""
+    x = np.asarray(position_angle, dtype=float)
+    th = np.asarray(phase, dtype=float)
+    if x.shape != th.shape:
+        raise ValueError("position_angle and phase must have the same shape")
+    return x + th, x - th
+
+
+def swarmalator_coupled_kuramoto_rhs(
+    xi: np.ndarray,
+    eta: np.ndarray,
+    *,
+    nu: np.ndarray | None = None,
+    omega: np.ndarray | None = None,
+    J: float = 1.0,
+    K: float = 1.0,
+) -> tuple[np.ndarray, np.ndarray]:
+    """Equivalent sum/difference-coordinate form of the 1D model."""
+    xi = np.asarray(xi, dtype=float)
+    eta = np.asarray(eta, dtype=float)
+    if xi.shape != eta.shape:
+        raise ValueError("xi and eta must have the same shape")
+    n = xi.size
+    nu_arr = np.zeros(n) if nu is None else np.asarray(nu, dtype=float)
+    om_arr = np.zeros(n) if omega is None else np.asarray(omega, dtype=float)
+    a = 0.5 * (J + K)
+    b = 0.5 * (J - K)
+    dxi = np.empty(n, dtype=float)
+    deta = np.empty(n, dtype=float)
+    for i in range(n):
+        sx = np.mean(np.sin(xi - xi[i]))
+        se = np.mean(np.sin(eta - eta[i]))
+        dxi[i] = nu_arr[i] + om_arr[i] + a * sx + b * se
+        deta[i] = nu_arr[i] - om_arr[i] + b * sx + a * se
+    return dxi, deta
+
+
+def rainbow_order_parameters(
+    position_angle: np.ndarray,
+    phase: np.ndarray,
+) -> tuple[complex, complex]:
+    """W_+ and W_- = <exp(i(x +/- theta))> for 1D swarmalators."""
+    xi, eta = swarmalator_sum_difference(position_angle, phase)
+    return complex(np.mean(np.exp(1j * xi))), complex(np.mean(np.exp(1j * eta)))
+
+
+def swarmalator_order_summary(
+    position_angle: np.ndarray,
+    phase: np.ndarray,
+) -> dict[str, float]:
+    """Global phase coherence plus the two rainbow amplitudes."""
+    R = abs(kuramoto_order_parameter(np.asarray(phase, dtype=float)))
+    wp, wm = rainbow_order_parameters(position_angle, phase)
+    return {"R_phase": float(R), "S_plus": float(abs(wp)), "S_minus": float(abs(wm))}
+
+
+SWARMALATOR_OPEN_PUZZLES = (
+    "melting point from static async to active phase wave",
+    "splitting point from active to splintered phase wave",
+    "analytic supercritical rainbow-order branches",
+    "cluster-count selection in the splintered phase wave",
+)
