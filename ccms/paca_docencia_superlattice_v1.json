@@ -131,7 +131,9 @@
       "represent genus-2 Z2 homology sectors as H1(Sigma_2,Z2) ~= Z2^4",
       "distinguish local spin updates from non-contractible logical/loop operations",
       "use Montonen-Olive/S-duality as an advanced electric-magnetic strong/weak duality example, not as a Monte Carlo update rule",
-      "construct and validate a contextual kernel from physical/computational observables"
+      "construct and validate a contextual kernel from physical/computational observables",
+      "lift 1D/2D swarmalator phase sectors into Kuramoto representations with an explicit information-loss/coherence witness",
+      "compare ordinary Kuramoto coherence with swarmalator rainbow order parameters without collapsing the models"
     ],
     "evaluation": {
       "implementation": 0.3,
@@ -274,7 +276,13 @@
       "circle_map_mode_locking",
       "kuramoto_synchronization",
       "lattice_light_chart",
-      "textbook_codebook"
+      "textbook_codebook",
+      "jaranian_jauria_1d",
+      "jaranian_jauria_2d",
+      "kuramoto_sector",
+      "jaranian_kuramoto_lift",
+      "rainbow_order_parameters",
+      "ccms_tool_facet"
     ],
     "polyarrows": [
       {
@@ -327,6 +335,28 @@
         "outputs": [
           "qml_assessment"
         ]
+      },
+      {
+        "id": "jaranian_lift_phase_projection",
+        "inputs": [
+          "jaranian_jauria_2d"
+        ],
+        "outputs": [
+          "kuramoto_sector"
+        ],
+        "witness": "preserves phase/population/coupling/provenance; forgets spatial carrier"
+      },
+      {
+        "id": "jaranian_ring_coupled_kuramoto",
+        "inputs": [
+          "jaranian_jauria_1d"
+        ],
+        "outputs": [
+          "kuramoto_sector",
+          "kuramoto_sector",
+          "rainbow_order_parameters"
+        ],
+        "witness": "xi=x+theta, eta=x-theta coordinate rewrite with explicit self/cross couplings"
       }
     ],
     "pseudofunctorial_maps": [
@@ -411,7 +441,12 @@
     "CLICK": "resolve executable teaching artifacts and codebooks",
     "CLIT": "inspect typed interfaces/inputs/outputs without changing authority",
     "ZELDA": "traverse the guided learning path",
-    "POLES": "inspect dual pairs, dual couplings and topological sectors"
+    "POLES": "inspect dual pairs, dual couplings and topological sectors",
+    "KIT": "inspect executable kernel capabilities and runtime boundaries",
+    "QIT": "inspect QUNO plural contexts without identity collapse",
+    "GIT": "inspect repository/project graph, lineage and release projections",
+    "JAURIA": "inspect 1D/2D swarmalator primitives and Kuramoto lifts",
+    "BROWSER": "project the live CCMS knowledge base into navigable WML/web views"
   },
   "sources": [
     {
@@ -434,6 +469,18 @@
     {
       "id": "sigil4cpython-public-interface",
       "url": "https://github.com/jbermejovega/sigil4cpython/blob/main/SIGIL_PUBLIC_INTERFACE.md"
+    },
+    {
+      "id": "swarmalators-2017",
+      "citation": "O'Keeffe, Hong, Strogatz, Nature Communications 8, 1504 (2017)"
+    },
+    {
+      "id": "swarmalators-ring-2022",
+      "citation": "O'Keeffe, Ceron, Petersen, Physical Review E 105, 014211 (2022)"
+    },
+    {
+      "id": "nonidentical-swarmalators-2022",
+      "citation": "Yoon et al., Physical Review Letters 129, 208002 (2022)"
     }
   ]
 }
