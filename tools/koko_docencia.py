@@ -51,8 +51,10 @@ def validate_manifest(data: dict[str, Any]) -> None:
     missing = [key for key in required if key not in data]
     if missing:
         raise ValueError(f"manifest missing keys: {missing}")
-    if set(data["cli_ports"]) != {"CLICK", "CLIT", "ZELDA", "POLES"}:
-        raise ValueError("CLI port set must be exactly CLICK/CLIT/ZELDA/POLES")
+    required_ports = {"CLICK", "CLIT", "ZELDA", "POLES"}
+    missing_ports = required_ports - set(data["cli_ports"])
+    if missing_ports:
+        raise ValueError(f"CLI port set missing core ports: {sorted(missing_ports)}")
     validate_dag(data)
 
     objects = set(data["polykategory"]["objects"])
@@ -211,6 +213,28 @@ def print_port(data: dict[str, Any], name: str) -> None:
         print("Montonen-Olive/S: electric <-> magnetic; tau -> -1/tau")
         print("Genus-2 homology basis: a1, b1, a2, b2")
         print("Important: duality maps are not generic Monte Carlo acceptance rules.")
+    elif name == "KIT":
+        print("Scientific core: tutorials/practica-2026-ising-duality/ising_duality_core.py")
+        print("Semantic teaching core: tutorials/practica-2026-ising-duality/toy_polykategory.py")
+        print("Runtime boundary: user-space Python; no Linux-kernel patch required.")
+    elif name == "QIT":
+        print("QUNO preserves plural alternatives without identity collapse.")
+        for obj in data["polykategory"]["objects"]:
+            if any(token in obj for token in ("quno", "localization", "sector", "jauria")):
+                print(obj)
+    elif name == "GIT":
+        for repo in data["repositories"]:
+            print(f"{repo['id']}\t{repo['role']}\t{repo['status']}\t{repo['repo']}")
+        print("fork/clone/mirror topology != semantic identity or authority")
+    elif name == "JAURIA":
+        print("JARANIAN_JAURIA_1D_RING -> xi/eta -> coupled Kuramoto sectors")
+        print("JARANIAN_JAURIA_2D -> witnessed phase-only Kuramoto projection")
+        print("observables: phase order + rainbow order parameters + trajectories")
+        print("references: tutorials/practica-2026-ising-duality/SWARMALATOR_REFERENCES.md")
+    elif name == "BROWSER":
+        print("Landing page: site/index.html")
+        print("CCMS source: ccms/paca_docencia_superlattice_v1.json")
+        print("The web view is a projection, not a second source of truth.")
 
 
 def print_cocycle(data: dict[str, Any]) -> None:
@@ -260,7 +284,7 @@ def main() -> int:
     sub.add_parser("notebook-smoke")
     sub.add_parser("cocycle")
     sub.add_parser("preworkflow")
-    for port in ("click", "clit", "zelda", "poles"):
+    for port in ("click", "clit", "zelda", "poles", "kit", "qit", "git", "jauria", "browser"):
         sub.add_parser(port)
 
     dbp = sub.add_parser("db-build")
@@ -285,7 +309,7 @@ def main() -> int:
         print("notebook smoke passed")
     elif args.command == "cocycle":
         print_cocycle(data)
-    elif args.command in {"click", "clit", "zelda", "poles"}:
+    elif args.command in {"click", "clit", "zelda", "poles", "kit", "qit", "git", "jauria", "browser"}:
         print_port(data, args.command)
     elif args.command == "db-build":
         materialize_db(data, args.output)
