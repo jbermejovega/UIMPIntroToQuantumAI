@@ -435,3 +435,125 @@ SWARMALATOR_OPEN_PUZZLES = (
     "analytic supercritical rainbow-order branches",
     "cluster-count selection in the splintered phase wave",
 )
+
+
+@dataclass(frozen=True)
+class KuramotoSector:
+    """Typed phase-only projection of a coupled oscillator population."""
+
+    phase: np.ndarray
+    natural_frequency: np.ndarray
+    coupling: float
+    topology: str = "all_to_all"
+    provenance: tuple[str, ...] = ("Kuramoto",)
+
+    def __post_init__(self) -> None:
+        th = np.asarray(self.phase, dtype=float)
+        om = np.asarray(self.natural_frequency, dtype=float)
+        if th.shape != om.shape or th.ndim != 1:
+            raise ValueError("phase and natural_frequency must be matching 1D arrays")
+        object.__setattr__(self, "phase", th)
+        object.__setattr__(self, "natural_frequency", om)
+
+
+@dataclass(frozen=True)
+class JaranianLiftWitness:
+    source_type: str
+    target_type: str
+    preserves: tuple[str, ...]
+    forgets: tuple[str, ...]
+    note: str
+
+
+def jaranian_lift_to_kuramoto(
+    jauria: JaranianJauria,
+    *,
+    natural_frequency: np.ndarray | None = None,
+) -> tuple[KuramotoSector, JaranianLiftWitness]:
+    """Project a 2D swarmalator population to its phase-only Kuramoto sector.
+
+    This is a forgetful/projection map: spatial coordinates and phase-dependent
+    attraction are intentionally not transported into the Kuramoto target.
+    """
+    n = jauria.phase.size
+    omega = (
+        np.zeros(n, dtype=float)
+        if natural_frequency is None
+        else np.asarray(natural_frequency, dtype=float)
+    )
+    if omega.shape != (n,):
+        raise ValueError("natural_frequency must match jauria population size")
+    sector = KuramotoSector(
+        phase=jauria.phase.copy(),
+        natural_frequency=omega,
+        coupling=float(jauria.K),
+        topology="all_to_all_phase_projection",
+        provenance=jauria.provenance + ("JARANIAN_LIFT_TO_KURAMOTO",),
+    )
+    witness = JaranianLiftWitness(
+        source_type="JARANIAN_JAURIA_2D[QUNO]",
+        target_type="KURAMOTO_SECTOR",
+        preserves=("phase", "population_arity", "phase_coupling", "provenance"),
+        forgets=("2D_position", "spatial_repulsion", "phase_dependent_attraction"),
+        note="projection/forgetful lift; source and target are not physically identical",
+    )
+    return sector, witness
+
+
+def jaranian_ring_lift_to_coupled_kuramoto(
+    position_angle: np.ndarray,
+    phase: np.ndarray,
+    *,
+    nu: np.ndarray | None = None,
+    omega: np.ndarray | None = None,
+    J: float = 1.0,
+    K: float = 1.0,
+) -> tuple[tuple[KuramotoSector, KuramotoSector], JaranianLiftWitness]:
+    """Lift the 1D ring model into xi=x+theta and eta=x-theta Kuramoto sectors."""
+    x = np.asarray(position_angle, dtype=float)
+    th = np.asarray(phase, dtype=float)
+    if x.shape != th.shape or x.ndim != 1:
+        raise ValueError("position_angle and phase must be matching 1D arrays")
+    n = x.size
+    nu_arr = np.zeros(n) if nu is None else np.asarray(nu, dtype=float)
+    om_arr = np.zeros(n) if omega is None else np.asarray(omega, dtype=float)
+    if nu_arr.shape != x.shape or om_arr.shape != x.shape:
+        raise ValueError("natural-frequency arrays must match position shape")
+
+    xi, eta = swarmalator_sum_difference(x, th)
+    a = 0.5 * (J + K)
+    b = 0.5 * (J - K)
+
+    xi_sector = KuramotoSector(
+        phase=xi,
+        natural_frequency=nu_arr + om_arr,
+        coupling=a,
+        topology=f"coupled_to_eta:cross={b}",
+        provenance=("1D-swarmalator-ring", "xi=x+theta"),
+    )
+    eta_sector = KuramotoSector(
+        phase=eta,
+        natural_frequency=nu_arr - om_arr,
+        coupling=a,
+        topology=f"coupled_to_xi:cross={b}",
+        provenance=("1D-swarmalator-ring", "eta=x-theta"),
+    )
+    witness = JaranianLiftWitness(
+        source_type="JARANIAN_JAURIA_1D_RING[QUNO]",
+        target_type="KURAMOTO_SECTOR[xi] x KURAMOTO_SECTOR[eta]",
+        preserves=(
+            "ring_phase_geometry",
+            "sum_difference_coordinates",
+            "natural_frequency_combinations",
+            "self_coupling=(J+K)/2",
+            "cross_coupling=(J-K)/2",
+        ),
+        forgets=("original x/theta factorization after projection",),
+        note="equivalent coordinate rewrite for the declared 1D ring equations",
+    )
+    return (xi_sector, eta_sector), witness
+
+
+def kuramoto_sector_rhs(sector: KuramotoSector) -> np.ndarray:
+    """Evaluate the standard all-to-all Kuramoto RHS for a phase-only sector."""
+    return kuramoto_rhs(sector.phase, sector.natural_frequency, sector.coupling)
