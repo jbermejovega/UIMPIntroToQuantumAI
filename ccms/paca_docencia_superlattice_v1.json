@@ -1,0 +1,724 @@
+{
+  "id": "PACA_DOCENCIA_SUPERLATTICE_QML_2026_V1",
+  "version": "1.0.0",
+  "status": "candidate",
+  "authority": {
+    "course_repository": "jbermejovega/UIMPIntroToQuantumAI",
+    "policy": "presentation != certification",
+    "source_of_truth": "ccms/paca_docencia_superlattice_v1.json",
+    "zero_source": {
+      "repository": "jbermejovega/sigilbook",
+      "visibility_contract": "private canonical metaproject; public course repos carry typed release projections only",
+      "authority_transport": false
+    }
+  },
+  "runtime": {
+    "host_contract": "user-space POSIX/Python; no Linux kernel patch required",
+    "preferred_host": "Linux",
+    "python": ">=3.11",
+    "base_dependencies": [
+      "numpy",
+      "matplotlib",
+      "jupyter"
+    ],
+    "optional_dependencies": [
+      "pennylane",
+      "qiskit"
+    ],
+    "replay_rule": "one error -> one change -> one rerun -> one note",
+    "sigil4py": {
+      "role": "optional public semantic/replay adapter",
+      "rule": "public codebooks remain scientifically executable without private SIGILBOOK access",
+      "public_cpython_carrier": "jbermejovega/sigil4cpython"
+    }
+  },
+  "syllabus": {
+    "course": "Quantum Machine Learning",
+    "blocks": [
+      {
+        "id": "general-ai",
+        "title": "General introduction to AI",
+        "teachers": [
+          "Juani"
+        ],
+        "topics": [
+          "what is learning?",
+          "supervised vs unsupervised learning",
+          "training, validation, generalization and trainability",
+          "automata / Ising model as the practice spine",
+          "current topics in ML and QML"
+        ]
+      },
+      {
+        "id": "classical-models",
+        "title": "Models (classical)",
+        "teachers": [
+          "Daniel",
+          "David"
+        ],
+        "topics": [
+          "PCA [Daniel]",
+          "trees and random forests [Daniel]",
+          "neural networks: feed-forward, recurrent, convolutional [Daniel]",
+          "k-means and clustering [David, 1h]",
+          "support vector machines [David, 1h]"
+        ]
+      },
+      {
+        "id": "qml",
+        "title": "Quantum Machine Learning",
+        "teachers": [
+          "Juani"
+        ],
+        "topics": [
+          "quantum advantage",
+          "re-quantization / quantum representations",
+          "quantum-inspired methods",
+          "quantum optimization",
+          "learning from quantum data and experiments",
+          "trainability, noise and resource accounting"
+        ]
+      },
+      {
+        "id": "qml-models",
+        "title": "Quantum Machine Learning Models",
+        "teachers": [
+          "David",
+          "Roberta"
+        ],
+        "topics": [
+          "linear algebra (HHL) and linear fitting [David, 1h]",
+          "quantum kernels [David, 1h]",
+          "ML for and with quantum - examples [Roberta, 1h]",
+          "quantum perceptron [Roberta, 1h]",
+          "quantum associative memory [Roberta, 1h]",
+          "quantum reservoir computing [Roberta, 2h]",
+          "hands-on lecture [2h]"
+        ]
+      }
+    ],
+    "exercises": [
+      {
+        "teacher": "Juani",
+        "exercise": "Contextual kernel: classical/quantum Ising model and duality codebook"
+      },
+      {
+        "teacher": "Daniel",
+        "exercise": "Neural networks for entanglement detection (classical)"
+      },
+      {
+        "teacher": "David",
+        "exercise": "SVM classification in classical and quantum feature spaces with PennyLane"
+      },
+      {
+        "teacher": "Roberta",
+        "exercise": "Critical assessment of QNN design"
+      }
+    ],
+    "juani_course_text": {
+      "general_ai": "docs/teaching/JUANI_QML_LECTURE_NOTES_ABRIDGED_2026.md#campus-description--general-introduction-to-ai--ml",
+      "qml": "docs/teaching/JUANI_QML_LECTURE_NOTES_ABRIDGED_2026.md#campus-description--quantum-machine-learning",
+      "lecture_notes": "docs/teaching/JUANI_QML_LECTURE_NOTES_ABRIDGED_2026.md"
+    }
+  },
+  "practice_2026": {
+    "id": "ising-duality-codebook",
+    "audiences": [
+      "physics",
+      "mathematics",
+      "computer_science"
+    ],
+    "learning_targets": [
+      "simulate the classical square-lattice Ising model with local Metropolis updates",
+      "recover the Onsager critical scale and compute the Kramers-Wannier dual coupling",
+      "recognize the Hopfield network as an Ising-like energy model without identifying it with the Onsager lattice model",
+      "solve a small transverse-field Ising model by exact diagonalization",
+      "represent genus-2 Z2 homology sectors as H1(Sigma_2,Z2) ~= Z2^4",
+      "distinguish local spin updates from non-contractible logical/loop operations",
+      "use Montonen-Olive/S-duality as an advanced electric-magnetic strong/weak duality example, not as a Monte Carlo update rule",
+      "construct and validate a contextual kernel from physical/computational observables",
+      "lift 1D/2D swarmalator phase sectors into Kuramoto representations with an explicit information-loss/coherence witness",
+      "compare ordinary Kuramoto coherence with swarmalator rainbow order parameters without collapsing the models"
+    ],
+    "evaluation": {
+      "implementation": 0.3,
+      "physics_and_mathematics": 0.3,
+      "kernel_and_data_analysis": 0.2,
+      "critical_interpretation": 0.2
+    },
+    "textbook_format": [
+      "chapter",
+      "mathematical_kernel",
+      "observables",
+      "executable_model",
+      "experiment",
+      "interpretation",
+      "reproducibility_witness",
+      "exercises"
+    ],
+    "public_install": {
+      "path": "tutorials/practica-2026-ising-duality",
+      "command": "python -m pip install -r requirements.txt",
+      "optional_sigil4py": "python -m pip install sigil4py",
+      "caveat": "optional command requires a public sigil4py distribution in the configured package source"
+    },
+    "required_learning_targets": [
+      "simulate the classical square-lattice Ising model with local Metropolis updates",
+      "recover the Onsager critical scale and compute the Kramers-Wannier dual coupling",
+      "recognize the Hopfield network as an Ising-like energy model without identifying it with the Onsager lattice model",
+      "solve a small transverse-field Ising model by exact diagonalization",
+      "represent genus-2 Z2 homology sectors as H1(Sigma_2,Z2) ~= Z2^4",
+      "distinguish local spin updates from non-contractible logical/loop operations",
+      "use Montonen-Olive/S-duality as an advanced electric-magnetic strong/weak duality example, not as a Monte Carlo update rule",
+      "construct and validate a contextual kernel from physical/computational observables",
+      "compare the contextual/quantum construction against an explicit classical reference",
+      "state the resource assumptions required before claiming quantum advantage"
+    ],
+    "research_appendices": {
+      "assessed_in_base_course": false,
+      "note": "Optional research-facing material is available in the codebook/repository but is synchronized only for TFG/TFM/PhD routes.",
+      "topics": [
+        "Anderson and Aubry-Andre localization",
+        "circle map and Arnold tongues",
+        "Kuramoto synchronization",
+        "1D/2D swarmalators and Jaranian lifts",
+        "Bose/Jaynes-Cummings-Hubbard comparison",
+        "SIGIL/KUIR/QUAZRIS typed semantic adapters"
+      ]
+    }
+  },
+  "repositories": [
+    {
+      "id": "uimp-qai",
+      "repo": "jbermejovega/UIMPIntroToQuantumAI",
+      "role": "canonical_course",
+      "status": "active",
+      "provides": [
+        "syllabus",
+        "tutorials",
+        "codebook",
+        "ccms",
+        "paca_docencia"
+      ]
+    },
+    {
+      "id": "fisica-computacional",
+      "repo": "jbermejovega/fisicacomputacional",
+      "role": "upstream_teaching_source",
+      "status": "active",
+      "provides": [
+        "06_Monte_Carlo_Ising",
+        "Modelo Hopfield",
+        "KQC teaching gate"
+      ]
+    },
+    {
+      "id": "uimp-102699",
+      "repo": "jbermejovega/UIMP-102699---Machine-learning-and-quantum-computers",
+      "role": "legacy_or_companion_course",
+      "status": "reference",
+      "provides": [
+        "Qiskit tutorial",
+        "variational quantum algorithms"
+      ]
+    },
+    {
+      "id": "comp-2526",
+      "repo": "jbermejovega/2526_Computacional",
+      "role": "course_instance",
+      "status": "reference",
+      "provides": [
+        "student-facing computational physics instance"
+      ]
+    },
+    {
+      "id": "computacional-workspace",
+      "repo": "jbermejovega/Computacional",
+      "role": "teaching_workspace",
+      "status": "reference",
+      "provides": [
+        "course development materials"
+      ]
+    },
+    {
+      "id": "quantum-data-fitting-hhl",
+      "repo": "jbermejovega/quantum-data-fitting-HHL",
+      "role": "historical_reference",
+      "status": "reference",
+      "provides": [
+        "HHL/data-fitting material"
+      ]
+    },
+    {
+      "id": "introtoquantumai",
+      "repo": "jbermejovega/introtoquantumai",
+      "role": "reference_textbook_repository",
+      "status": "reference",
+      "provides": [
+        "quantum algorithms/QML lecture-note lineage"
+      ]
+    },
+    {
+      "id": "sigilbook-zero-source",
+      "repo": "jbermejovega/sigilbook",
+      "role": "private_zero_source_metaproject",
+      "status": "authority_reference",
+      "provides": [
+        "typed contracts",
+        "pseudofunctorial project seam",
+        "textbook grammar"
+      ],
+      "public_projection_only": true
+    },
+    {
+      "id": "sigil4cpython",
+      "repo": "jbermejovega/sigil4cpython",
+      "role": "public_runtime_compatibility_carrier",
+      "status": "active",
+      "provides": [
+        "public CPython boundary",
+        "Primitive ∩ Plural ∩ QUNO interface"
+      ],
+      "public_projection_only": false
+    }
+  ],
+  "polykategory": {
+    "objects": [
+      "classical_ising",
+      "onsager_solution",
+      "kramers_wannier_dual",
+      "hopfield_memory",
+      "tfim_quantum_ising",
+      "genus2_homology",
+      "montonen_olive_bridge",
+      "contextual_features",
+      "contextual_kernel",
+      "qml_assessment",
+      "sigilbook_zero_source",
+      "public_release_projection",
+      "sigil4cpython_boundary",
+      "sigilitas_semantic_kernel",
+      "quazris_dual_proxy",
+      "quno_plural_carrier",
+      "anderson_localization",
+      "aubry_andre_self_dual_chart",
+      "circle_map_mode_locking",
+      "kuramoto_synchronization",
+      "lattice_light_chart",
+      "textbook_codebook",
+      "jaranian_jauria_1d",
+      "jaranian_jauria_2d",
+      "kuramoto_sector",
+      "jaranian_kuramoto_lift",
+      "rainbow_order_parameters",
+      "ccms_tool_facet",
+      "kuir_quazris_binding",
+      "moogi_resynthesis_trace",
+      "paca_agenda",
+      "paca_calendar",
+      "konnektia",
+      "qquapp",
+      "qquappi",
+      "moog",
+      "moogi",
+      "click42_cli"
+    ],
+    "polyarrows": [
+      {
+        "id": "classical_observables",
+        "inputs": [
+          "classical_ising",
+          "onsager_solution"
+        ],
+        "outputs": [
+          "contextual_features"
+        ]
+      },
+      {
+        "id": "duality_context",
+        "inputs": [
+          "classical_ising",
+          "kramers_wannier_dual",
+          "genus2_homology"
+        ],
+        "outputs": [
+          "contextual_features"
+        ]
+      },
+      {
+        "id": "quantum_context",
+        "inputs": [
+          "tfim_quantum_ising",
+          "montonen_olive_bridge"
+        ],
+        "outputs": [
+          "contextual_features"
+        ]
+      },
+      {
+        "id": "learning_context",
+        "inputs": [
+          "hopfield_memory",
+          "contextual_features"
+        ],
+        "outputs": [
+          "contextual_kernel"
+        ]
+      },
+      {
+        "id": "assessment",
+        "inputs": [
+          "contextual_kernel",
+          "contextual_features"
+        ],
+        "outputs": [
+          "qml_assessment"
+        ]
+      },
+      {
+        "id": "jaranian_lift_phase_projection",
+        "inputs": [
+          "jaranian_jauria_2d"
+        ],
+        "outputs": [
+          "kuramoto_sector"
+        ],
+        "witness": "preserves phase/population/coupling/provenance; forgets spatial carrier"
+      },
+      {
+        "id": "jaranian_ring_coupled_kuramoto",
+        "inputs": [
+          "jaranian_jauria_1d"
+        ],
+        "outputs": [
+          "kuramoto_sector",
+          "kuramoto_sector",
+          "rainbow_order_parameters"
+        ],
+        "witness": "xi=x+theta, eta=x-theta coordinate rewrite with explicit self/cross couplings"
+      },
+      {
+        "id": "source_bind_resynthesize",
+        "inputs": [
+          "sigilbook_zero_source",
+          "public_release_projection"
+        ],
+        "outputs": [
+          "kuir_quazris_binding",
+          "moogi_resynthesis_trace"
+        ],
+        "witness": "typed binding with explicit provenance, dual trace and learning error"
+      },
+      {
+        "id": "agenda_to_calendar_connector_projection",
+        "inputs": [
+          "paca_agenda",
+          "paca_calendar"
+        ],
+        "outputs": [
+          "konnektia",
+          "qquapp",
+          "kuir_quazris_binding",
+          "click42_cli"
+        ],
+        "witness": "typed temporal projection; agenda state remains distinct from calendar view and external effects"
+      },
+      {
+        "id": "factorized_connector_superlattice",
+        "inputs": [
+          "konnektia",
+          "qquapp",
+          "qquappi",
+          "moog",
+          "moogi"
+        ],
+        "outputs": [
+          "kuir_quazris_binding",
+          "click42_cli"
+        ],
+        "witness": "context-free route composition; no connector becomes kernel or authority"
+      }
+    ],
+    "pseudofunctorial_maps": [
+      {
+        "id": "zero_source_to_public_course",
+        "source": "sigilbook_zero_source",
+        "target": "public_release_projection",
+        "preserves": [
+          "typed interface",
+          "provenance",
+          "replay contract"
+        ],
+        "forbids": [
+          "identity transport",
+          "authority transport",
+          "private source publication"
+        ]
+      },
+      {
+        "id": "course_to_runtime",
+        "source": "public_release_projection",
+        "target": "sigil4cpython_boundary",
+        "preserves": [
+          "public runtime contract",
+          "typed plural/QUNO metadata"
+        ],
+        "forbids": [
+          "CPython private internals as SIGIL contract"
+        ]
+      }
+    ],
+    "pushout_pullback_rule": {
+      "nlab_alignment": "pushout/pullback are universal-property composition schemas; JOIN/MEET names are pedagogical projections unless a witness establishes the identification",
+      "devops_realization": "materialized only through the acyclic execution DAG",
+      "pseudofunctoriality": "composition preserved up to explicit coherence witness; not strict equality by default"
+    }
+  },
+  "devops": {
+    "dag": {
+      "nodes": [
+        "manifest_validate",
+        "science_smoke",
+        "notebook_smoke",
+        "db_materialize",
+        "toc_check",
+        "schedule_check",
+        "connector_check",
+        "course_report"
+      ],
+      "edges": [
+        [
+          "manifest_validate",
+          "science_smoke"
+        ],
+        [
+          "science_smoke",
+          "notebook_smoke"
+        ],
+        [
+          "manifest_validate",
+          "db_materialize"
+        ],
+        [
+          "notebook_smoke",
+          "course_report"
+        ],
+        [
+          "db_materialize",
+          "course_report"
+        ],
+        [
+          "manifest_validate",
+          "toc_check"
+        ],
+        [
+          "manifest_validate",
+          "schedule_check"
+        ],
+        [
+          "manifest_validate",
+          "connector_check"
+        ],
+        [
+          "toc_check",
+          "course_report"
+        ],
+        [
+          "schedule_check",
+          "course_report"
+        ],
+        [
+          "connector_check",
+          "course_report"
+        ]
+      ]
+    },
+    "cocyclic_overlay": {
+      "note": "semantic/review rotation only; these are not scheduler edges",
+      "tau": {
+        "manifest_validate": "science_smoke",
+        "science_smoke": "notebook_smoke",
+        "notebook_smoke": "db_materialize",
+        "db_materialize": "toc_check",
+        "toc_check": "schedule_check",
+        "schedule_check": "connector_check",
+        "connector_check": "course_report",
+        "course_report": "manifest_validate"
+      }
+    }
+  },
+  "cli_ports": {
+    "CLICK": "resolve executable teaching artifacts and codebooks",
+    "CLIT": "inspect typed interfaces/inputs/outputs without changing authority",
+    "ZELDA": "traverse the guided learning path",
+    "POLES": "inspect dual pairs, dual couplings and topological sectors",
+    "KIT": "inspect executable kernel capabilities and runtime boundaries",
+    "QIT": "inspect QUNO plural contexts without identity collapse",
+    "GIT": "inspect repository/project graph, lineage and release projections",
+    "JAURIA": "inspect 1D/2D swarmalator primitives and Kuramoto lifts",
+    "BROWSER": "project the live CCMS knowledge base into navigable WML/web views",
+    "BIND": "inspect source binding/debinding/rebinding/rekontra-binding facet",
+    "TOC": "validate and inspect the typed course navigation atlas",
+    "LOCALIZE": "resolve a navigation local section to its narrowest interface",
+    "AGENDA": "query PACA Agenda course sessions",
+    "CALENDAR": "project PACA Agenda sessions as calendar/ICS data",
+    "KONNEKTIA": "inspect factorized connector-network plans without effects",
+    "CLICK42": "localize and select the appropriate course tool/surface"
+  },
+  "sources": [
+    {
+      "id": "fisica-computacional-ising",
+      "url": "https://github.com/jbermejovega/fisicacomputacional/tree/main/06_Monte_Carlo_Ising"
+    },
+    {
+      "id": "montonen-olive-review",
+      "url": "https://arxiv.org/abs/hep-th/9608090"
+    },
+    {
+      "id": "ising-reference",
+      "url": "https://encyclopediaofmath.org/index.php?title=Ising_model"
+    },
+    {
+      "id": "sigilbook-textbook-format",
+      "visibility": "private-source contract only",
+      "path": "books/pluraltype_computational_physics/PLURALTYPE_COMPUTATIONAL_PHYSICS_TEXTBOOK_MASTER_V1.md"
+    },
+    {
+      "id": "sigil4cpython-public-interface",
+      "url": "https://github.com/jbermejovega/sigil4cpython/blob/main/SIGIL_PUBLIC_INTERFACE.md"
+    },
+    {
+      "id": "swarmalators-2017",
+      "citation": "O'Keeffe, Hong, Strogatz, Nature Communications 8, 1504 (2017)"
+    },
+    {
+      "id": "swarmalators-ring-2022",
+      "citation": "O'Keeffe, Ceron, Petersen, Physical Review E 105, 014211 (2022)"
+    },
+    {
+      "id": "nonidentical-swarmalators-2022",
+      "citation": "Yoon et al., Physical Review Letters 129, 208002 (2022)"
+    },
+    {
+      "id": "lecture-ud11",
+      "type": "supplied_teaching_material",
+      "title": "UD1.1 Introduction to Machine Learning"
+    },
+    {
+      "id": "lecture-ud12",
+      "type": "supplied_teaching_material",
+      "title": "UD1.2 Introduction to Quantum Machine Learning"
+    },
+    {
+      "id": "lecture-ud13",
+      "type": "supplied_teaching_material",
+      "title": "UD1.3 Theory of QML: Quantum Advantage"
+    },
+    {
+      "id": "lecture-learning-theory",
+      "type": "supplied_teaching_material",
+      "title": "Theory of QML: Quantum Learning Theory"
+    },
+    {
+      "id": "lecture-nisq",
+      "type": "supplied_teaching_material",
+      "title": "Theory of QML: QML Approaches / NISQ"
+    }
+  ],
+  "binding_facet": {
+    "schema": "PACA_CCMS_KUIR_QUAZRIS_SOURCE_BINDING_V1",
+    "implementation": "ccms/kuir_quazris_bindings.py",
+    "operations": [
+      "BIND",
+      "DEBIND",
+      "REBIND",
+      "REKONTRA_BIND"
+    ],
+    "semi_operations": [
+      "SEMI_FUSION",
+      "SEMI_JOIN",
+      "SEMI_MEET",
+      "SEMI_PUSHOUT",
+      "SEMI_PULLBACK"
+    ],
+    "laws": [
+      "composition != identity merge",
+      "projection != authority transport",
+      "debind does not rewrite source history",
+      "rekontra-bind is a dual presentation, not Git history rewind"
+    ],
+    "api_picture": {
+      "internal": "KRONE internal API",
+      "interface": "KUIR",
+      "external": "QUAZRIS external SIGIL API",
+      "shape": "primal/dual lattice"
+    },
+    "resynthesis": {
+      "stages": [
+        "observe",
+        "integrate",
+        "learn",
+        "exact_resynthesize"
+      ],
+      "error_explicit": true,
+      "prediction_is_authority": false
+    }
+  },
+  "research_sync": {
+    "schema_id": "UIMP_QML_RESEARCH_SYNC_TFG_TFM_PHD_V1",
+    "path": "docs/teaching/RESEARCH_SYNC_TFG_TFM_PHD_V1.md",
+    "enabled_for": [
+      "TFG",
+      "TFM",
+      "PhD"
+    ],
+    "enabled_for_base_course": false,
+    "auto_rewrite_base_syllabus": false,
+    "gate": [
+      "research question",
+      "prerequisites",
+      "source literature",
+      "executable/reproducible path",
+      "evaluation criterion",
+      "expected contribution",
+      "supervisor review"
+    ],
+    "focus_areas": [
+      "foundations of quantum computational advantage",
+      "quantum kernels, representations and trainability",
+      "Ising, optimization and classical-quantum mappings",
+      "tensor networks, renormalization and structured simulation",
+      "topological phases, QEC and MBQC",
+      "neural quantum states and reinforcement learning",
+      "learning quantum systems",
+      "differential geometry and derived/twisted categorical QML",
+      "compositional semantics and research software architecture"
+    ]
+  },
+  "temporal_facet": {
+    "schema_id": "PACA_AGENDA_CALENDAR_QML_2026_2027_V1",
+    "source": "ccms/paca_agenda_calendar_qml_2026_2027.json",
+    "timezone": "Europe/Madrid",
+    "event_count": 20,
+    "external_calendar_write_performed": false,
+    "unresolved": [
+      "qml-2027-01-29-1600"
+    ]
+  },
+  "connector_superlattice": {
+    "schema_id": "KONNEKTIA_QQUAPP_QQUAPPI_MOOG_MOOGI_KUIR_QUAZRIS_COURSE_CONNECTOR_SUPERLATTICE_V1",
+    "source": "ccms/konnektia_qquapp_moog_quazris_course_connectors_v1.json",
+    "layers": [
+      "KONNEKTIA",
+      "QQUAPP",
+      "QQUAPPI",
+      "MOOG",
+      "MOOGI",
+      "KUIR",
+      "QUAZRIS",
+      "CLICK42"
+    ],
+    "context_free_factorized": true,
+    "connector_effects_executed": false
+  }
+}
