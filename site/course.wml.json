@@ -9,6 +9,12 @@
       "href": "../PACADOC.md"
     },
     {
+      "id": "table_of_contents",
+      "type": "typed_navigation",
+      "href": "../README.md#1-table-of-contents",
+      "source": "../ccms/sigil_course_navigation_v1.json"
+    },
+    {
       "id": "syllabus",
       "type": "ccms_projection",
       "selector": "$.syllabus"
@@ -27,11 +33,31 @@
       "id": "knowledge",
       "type": "database_projection",
       "command": "python tools/koko_docencia.py db-build"
+    },
+    {
+      "id": "legacy_setup",
+      "type": "document_atlas",
+      "href": "../docs/legacy/README_2025_FULL.md#1-table-of-contents",
+      "localizer": "legacy_setup"
+    },
+    {
+      "id": "research_sync",
+      "type": "document",
+      "href": "../docs/teaching/RESEARCH_SYNC_TFG_TFM_PHD_V1.md",
+      "localizer": "research"
     }
   ],
   "rulezero": {
     "source_of_truth": "CCMS manifest",
     "browser_is_projection": true,
-    "presentation_is_certification": false
+    "presentation_is_certification": false,
+    "anchor_compatibility_is_projection": true,
+    "broken_seam_fails_preworkflow": true
+  },
+  "navigation": {
+    "manifest": "../ccms/sigil_course_navigation_v1.json",
+    "interface": "KUIR_CLOPEN_NAVIGATION",
+    "internal_authority": "KRONE_COURSE_NAVIGATION",
+    "localize_before_render": true
   }
 }
