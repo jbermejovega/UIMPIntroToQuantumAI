@@ -44,9 +44,9 @@
         "topics": [
           "what is learning?",
           "supervised vs unsupervised learning",
-          "trainability and generalization",
+          "training, validation, generalization and trainability",
           "automata / Ising model as the practice spine",
-          "current topics"
+          "current topics in ML and QML"
         ]
       },
       {
@@ -75,8 +75,8 @@
           "re-quantization / quantum representations",
           "quantum-inspired methods",
           "quantum optimization",
-          "trainability and limits",
-          "duality as a change of representation: Ising/Kramers-Wannier to electric-magnetic examples"
+          "learning from quantum data and experiments",
+          "trainability, noise and resource accounting"
         ]
       },
       {
@@ -114,7 +114,12 @@
         "teacher": "Roberta",
         "exercise": "Critical assessment of QNN design"
       }
-    ]
+    ],
+    "juani_course_text": {
+      "general_ai": "docs/teaching/JUANI_QML_LECTURE_NOTES_ABRIDGED_2026.md#campus-description--general-introduction-to-ai--ml",
+      "qml": "docs/teaching/JUANI_QML_LECTURE_NOTES_ABRIDGED_2026.md#campus-description--quantum-machine-learning",
+      "lecture_notes": "docs/teaching/JUANI_QML_LECTURE_NOTES_ABRIDGED_2026.md"
+    }
   },
   "practice_2026": {
     "id": "ising-duality-codebook",
@@ -156,6 +161,30 @@
       "command": "python -m pip install -r requirements.txt",
       "optional_sigil4py": "python -m pip install sigil4py",
       "caveat": "optional command requires a public sigil4py distribution in the configured package source"
+    },
+    "required_learning_targets": [
+      "simulate the classical square-lattice Ising model with local Metropolis updates",
+      "recover the Onsager critical scale and compute the Kramers-Wannier dual coupling",
+      "recognize the Hopfield network as an Ising-like energy model without identifying it with the Onsager lattice model",
+      "solve a small transverse-field Ising model by exact diagonalization",
+      "represent genus-2 Z2 homology sectors as H1(Sigma_2,Z2) ~= Z2^4",
+      "distinguish local spin updates from non-contractible logical/loop operations",
+      "use Montonen-Olive/S-duality as an advanced electric-magnetic strong/weak duality example, not as a Monte Carlo update rule",
+      "construct and validate a contextual kernel from physical/computational observables",
+      "compare the contextual/quantum construction against an explicit classical reference",
+      "state the resource assumptions required before claiming quantum advantage"
+    ],
+    "research_appendices": {
+      "assessed_in_base_course": false,
+      "note": "Optional research-facing material is available in the codebook/repository but is synchronized only for TFG/TFM/PhD routes.",
+      "topics": [
+        "Anderson and Aubry-Andre localization",
+        "circle map and Arnold tongues",
+        "Kuramoto synchronization",
+        "1D/2D swarmalators and Jaranian lifts",
+        "Bose/Jaynes-Cummings-Hubbard comparison",
+        "SIGIL/KUIR/QUAZRIS typed semantic adapters"
+      ]
     }
   },
   "repositories": [
@@ -496,6 +525,31 @@
     {
       "id": "nonidentical-swarmalators-2022",
       "citation": "Yoon et al., Physical Review Letters 129, 208002 (2022)"
+    },
+    {
+      "id": "lecture-ud11",
+      "type": "supplied_teaching_material",
+      "title": "UD1.1 Introduction to Machine Learning"
+    },
+    {
+      "id": "lecture-ud12",
+      "type": "supplied_teaching_material",
+      "title": "UD1.2 Introduction to Quantum Machine Learning"
+    },
+    {
+      "id": "lecture-ud13",
+      "type": "supplied_teaching_material",
+      "title": "UD1.3 Theory of QML: Quantum Advantage"
+    },
+    {
+      "id": "lecture-learning-theory",
+      "type": "supplied_teaching_material",
+      "title": "Theory of QML: Quantum Learning Theory"
+    },
+    {
+      "id": "lecture-nisq",
+      "type": "supplied_teaching_material",
+      "title": "Theory of QML: QML Approaches / NISQ"
     }
   ],
   "binding_facet": {
@@ -536,5 +590,36 @@
       "error_explicit": true,
       "prediction_is_authority": false
     }
+  },
+  "research_sync": {
+    "schema_id": "UIMP_QML_RESEARCH_SYNC_TFG_TFM_PHD_V1",
+    "path": "docs/teaching/RESEARCH_SYNC_TFG_TFM_PHD_V1.md",
+    "enabled_for": [
+      "TFG",
+      "TFM",
+      "PhD"
+    ],
+    "enabled_for_base_course": false,
+    "auto_rewrite_base_syllabus": false,
+    "gate": [
+      "research question",
+      "prerequisites",
+      "source literature",
+      "executable/reproducible path",
+      "evaluation criterion",
+      "expected contribution",
+      "supervisor review"
+    ],
+    "focus_areas": [
+      "foundations of quantum computational advantage",
+      "quantum kernels, representations and trainability",
+      "Ising, optimization and classical-quantum mappings",
+      "tensor networks, renormalization and structured simulation",
+      "topological phases, QEC and MBQC",
+      "neural quantum states and reinforcement learning",
+      "learning quantum systems",
+      "differential geometry and derived/twisted categorical QML",
+      "compositional semantics and research software architecture"
+    ]
   }
 }
