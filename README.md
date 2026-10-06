@@ -10,7 +10,9 @@ teaching projections and provenance references are exposed here.
 
 - [PACADOC](PACADOC.md) — student first-use guide
 - [Web/WML landing](site/index.html) — course map and codebook browser
+- [Juani QML lecture notes — abridged 2026](docs/teaching/JUANI_QML_LECTURE_NOTES_ABRIDGED_2026.md)
 - [2026 Ising/Duality Codebook](tutorials/practica-2026-ising-duality/README.md)
+- [Research Sync — TFG/TFM/PhD focus areas](docs/teaching/RESEARCH_SYNC_TFG_TFM_PHD_V1.md)
 - [CCMS source](ccms/paca_docencia_superlattice_v1.json)
 - [PACA DOCENCIA CCMS/KUIR facet](docs/PACA_DOCENCIA_CCMS_KUIR_FACET_V1.md)
 - [Full 2025 course guide](docs/legacy/README_2025_FULL.md) — restored historical setup/tutorial documentation
@@ -20,10 +22,12 @@ teaching projections and provenance references are exposed here.
 ### General introduction to AI — Juani
 
 - what is learning?
-- supervised vs unsupervised learning
-- trainability and generalization
+- paradigms: supervised vs unsupervised learning
+- training, validation, generalization and trainability
 - automata / Ising model as the practice spine
-- current topics
+- current topics in ML and QML
+
+Campus-ready description: [General introduction to AI / ML](docs/teaching/JUANI_QML_LECTURE_NOTES_ABRIDGED_2026.md#campus-description--general-introduction-to-ai--ml)
 
 ### Classical models — Daniel / David
 
@@ -39,8 +43,12 @@ teaching projections and provenance references are exposed here.
 - re-quantization / quantum representations
 - quantum-inspired methods
 - quantum optimization
-- trainability and limitations
-- duality as a change of representation
+- learning from quantum data and experiments
+- trainability, noise and resource accounting
+
+Campus-ready description: [Quantum Machine Learning](docs/teaching/JUANI_QML_LECTURE_NOTES_ABRIDGED_2026.md#campus-description--quantum-machine-learning)
+
+Research-frontier topics are **not** automatically part of the base syllabus. They are synchronized only for [TFG/TFM/PhD projects](docs/teaching/RESEARCH_SYNC_TFG_TFM_PHD_V1.md).
 
 ### Quantum Machine Learning Models
 
