@@ -109,34 +109,80 @@ Executable bridge:
 
 ### F8 — Differential geometry + derived/twisted categories
 
-Research-only mathematical layer:
+Research-only mathematical layer. The standard mathematical spine is fixed first:
+
+~~~text
+smooth manifolds
+-> tangent / cotangent bundles
+-> differential forms
+-> exterior derivative d
+-> closed forms: dω = 0
+-> exact forms: ω = dη
+-> d² = 0
+-> de Rham cohomology H^•_dR
+-> pullback / pushforward where defined
+-> vector bundles + connections
+-> curvature / holonomy
+~~~
+
+This gives the basic local/global distinction used in the research layer:
+
+~~~text
+exact => closed
+closed != exact in general
+local potential != global potential
+cohomology class = obstruction/invariant to global exactness
+~~~
+
+The categorical extension is then layered on top, rather than used as a replacement for differential geometry:
 
 ~~~text
 differential geometry
--> manifolds / bundles / connections / curvature
--> derived categories and derived functors
--> twisted categories / cocycle-twisted structures
+-> chain / cochain complexes
+-> derived constructions
+-> derived categories / derived functors
+-> cocycle-twisted and graded categories
+-> monoidal / braided / higher and polycategorical composition
 -> twistor constructions
 -> project-local "twisor" carriers
 -> concept / Konzept categories
--> polykategorical composition
--> typed diagrammatic interfaces
+-> KUIR typed interfaces
+-> QUAZRIS primal/dual projections
 ~~~
+
+**Twist attitude** is treated as a project-local descriptor of which structure a twist changes or preserves. It may encode, for example, a cocycle, grading, connection/holonomy datum, orientation/chirality choice or a change of presentation. It never licenses an untyped identification between two theories.
 
 Discipline:
 
 - standard mathematical notions keep their standard definitions;
+- pullback of differential forms is contravariant and preserves the exterior derivative;
+- cohomological equivalence does not imply equality of representatives;
+- derived equivalence, categorical duality, a cocycle twist and a twistor transform are distinct claims;
 - project-local SIGIL notions such as "twisor", "twist attitude", KonzeptKategorie and KUIR/QUAZRIS carriers are typed adapters/presentations;
 - a common interface does not establish an equivalence theorem.
 
-Candidate questions:
+Candidate TFG/TFM/PhD questions:
 
 - geometric feature maps and kernels on manifolds;
-- bundle/gauge-equivariant learning;
+- learning closed/exact differential forms or cohomology-sensitive observables from data;
+- bundle/gauge-equivariant learning and connection-aware architectures;
+- curvature/Laplacian descriptors for graph and manifold learning;
 - categorical organization of primal/dual representations;
 - derived/twisted invariants as data descriptors;
 - twistor-inspired coordinates for structured quantum models;
-- diagrammatic semantics for hybrid workflows.
+- topological obstructions to globally consistent learned coordinates;
+- diagrammatic/polykategorical semantics for hybrid workflows.
+
+Course bridge:
+
+~~~text
+Ising / kernels / Laplacians
+-> geometry of representations
+-> topology / cohomological obstructions
+-> advanced derived/twisted research questions
+~~~
+
+This bridge is **research-facing only**. It is not a mandatory learning outcome of the base QML course.
 
 ### F9 — Compositional semantics and research software architecture
 
