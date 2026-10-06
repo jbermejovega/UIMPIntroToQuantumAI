@@ -1,0 +1,224 @@
+{
+  "schema_id": "PACA_AGENDA_CALENDAR_QML_2026_2027_V1",
+  "version": "1.0.0",
+  "timezone": "Europe/Madrid",
+  "course": "Machine Learning",
+  "authority": {
+    "source": "user_supplied_schedule",
+    "repository_projection": "jbermejovega/UIMPIntroToQuantumAI",
+    "semantic_agenda": "PACA_AGENDA_CANONICAL_V1",
+    "calendar_projection": "PACA_CALENDAR_QQUAPP_RELATIONAL_WORKTREES_V1",
+    "external_write_performed": false
+  },
+  "events": [
+    {
+      "id": "qml-2026-10-23-1600",
+      "date": "2026-10-23",
+      "start": "16:00",
+      "end": "18:00",
+      "teacher": "Juani Bermejo",
+      "type": "Theory class (prerecorded video)",
+      "unit": null,
+      "observations": ""
+    },
+    {
+      "id": "qml-2026-10-30-1600",
+      "date": "2026-10-30",
+      "start": "16:00",
+      "end": "18:00",
+      "teacher": "Juani Bermejo",
+      "type": "Theory class (prerecorded video)",
+      "unit": null,
+      "observations": ""
+    },
+    {
+      "id": "qml-2026-11-04-1900",
+      "date": "2026-11-04",
+      "start": "19:00",
+      "end": "20:00",
+      "teacher": "Juani Bermejo",
+      "type": "Tutoring",
+      "unit": null,
+      "observations": ""
+    },
+    {
+      "id": "qml-2026-11-06-1600",
+      "date": "2026-11-06",
+      "start": "16:00",
+      "end": "18:00",
+      "teacher": "Juani Bermejo",
+      "type": "Practical class (streaming)",
+      "unit": null,
+      "observations": ""
+    },
+    {
+      "id": "qml-2026-11-13-1600",
+      "date": "2026-11-13",
+      "start": "16:00",
+      "end": "18:00",
+      "teacher": "Daniel Manzano",
+      "type": "Theory class (prerecorded video)",
+      "unit": null,
+      "observations": ""
+    },
+    {
+      "id": "qml-2026-11-18-1900",
+      "date": "2026-11-18",
+      "start": "19:00",
+      "end": "20:00",
+      "teacher": "Daniel Manzano",
+      "type": "Theory class (prerecorded video)",
+      "unit": null,
+      "observations": ""
+    },
+    {
+      "id": "qml-2026-11-20-1600",
+      "date": "2026-11-20",
+      "start": "16:00",
+      "end": "17:00",
+      "teacher": "Daniel Manzano",
+      "type": "Tutoring",
+      "unit": null,
+      "observations": ""
+    },
+    {
+      "id": "qml-2026-11-20-1700",
+      "date": "2026-11-20",
+      "start": "17:00",
+      "end": "18:00",
+      "teacher": "Daniel Manzano",
+      "type": "Theory class (prerecorded video)",
+      "unit": null,
+      "observations": ""
+    },
+    {
+      "id": "qml-2026-11-27-1600",
+      "date": "2026-11-27",
+      "start": "16:00",
+      "end": "17:00",
+      "teacher": "David Zueco",
+      "type": "Tutoring",
+      "unit": null,
+      "observations": ""
+    },
+    {
+      "id": "qml-2026-11-27-1700",
+      "date": "2026-11-27",
+      "start": "17:00",
+      "end": "18:00",
+      "teacher": "David Zueco",
+      "type": "Theory class (prerecorded video)",
+      "unit": null,
+      "observations": ""
+    },
+    {
+      "id": "qml-2026-12-02-1900",
+      "date": "2026-12-02",
+      "start": "19:00",
+      "end": "20:00",
+      "teacher": "David Zueco",
+      "type": "Theory class (prerecorded video)",
+      "unit": null,
+      "observations": ""
+    },
+    {
+      "id": "qml-2026-12-04-1600",
+      "date": "2026-12-04",
+      "start": "16:00",
+      "end": "18:00",
+      "teacher": "Daniel Manzano",
+      "type": "Practical class (streaming)",
+      "unit": null,
+      "observations": ""
+    },
+    {
+      "id": "qml-2026-12-11-1600",
+      "date": "2026-12-11",
+      "start": "16:00",
+      "end": "18:00",
+      "teacher": "David Zueco",
+      "type": "Theory class (prerecorded video)",
+      "unit": null,
+      "observations": ""
+    },
+    {
+      "id": "qml-2026-12-16-1900",
+      "date": "2026-12-16",
+      "start": "19:00",
+      "end": "20:00",
+      "teacher": "Roberta Zambrini",
+      "type": "Theory class (prerecorded video)",
+      "unit": null,
+      "observations": ""
+    },
+    {
+      "id": "qml-2026-12-18-1600",
+      "date": "2026-12-18",
+      "start": "16:00",
+      "end": "18:00",
+      "teacher": "David Zueco",
+      "type": "Practical class (streaming)",
+      "unit": null,
+      "observations": ""
+    },
+    {
+      "id": "qml-2027-01-08-1600",
+      "date": "2027-01-08",
+      "start": "16:00",
+      "end": "18:00",
+      "teacher": "Roberta Zambrini",
+      "type": "Theory class (prerecorded video)",
+      "unit": null,
+      "observations": ""
+    },
+    {
+      "id": "qml-2027-01-15-1600",
+      "date": "2027-01-15",
+      "start": "16:00",
+      "end": "17:00",
+      "teacher": "Roberta Zambrini",
+      "type": "Tutoring",
+      "unit": null,
+      "observations": ""
+    },
+    {
+      "id": "qml-2027-01-15-1700",
+      "date": "2027-01-15",
+      "start": "17:00",
+      "end": "18:00",
+      "teacher": "Roberta Zambrini",
+      "type": "Theory class (prerecorded video)",
+      "unit": null,
+      "observations": ""
+    },
+    {
+      "id": "qml-2027-01-22-1600",
+      "date": "2027-01-22",
+      "start": "16:00",
+      "end": "18:00",
+      "teacher": "Roberta Zambrini",
+      "type": "Practical class (streaming)",
+      "unit": null,
+      "observations": ""
+    },
+    {
+      "id": "qml-2027-01-29-1600",
+      "date": "2027-01-29",
+      "start": "16:00",
+      "end": "18:00",
+      "teacher": null,
+      "type": null,
+      "unit": null,
+      "observations": "TBD in supplied schedule"
+    }
+  ],
+  "laws": [
+    "agenda_state != calendar_view",
+    "calendar_view != sync_effect",
+    "external_calendar_write_requires_effect_gate",
+    "unknown_teacher_or_type_remains_QUNO_TBD",
+    "source_order_preserved",
+    "identity_transport=false",
+    "authority_transport=false"
+  ]
+}
