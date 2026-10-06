@@ -5,18 +5,156 @@ import json
 import sqlite3
 import sys
 from collections import defaultdict, deque
+from datetime import datetime
 from pathlib import Path
 from typing import Any
+from zoneinfo import ZoneInfo
 
 ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = ROOT / "ccms" / "paca_docencia_superlattice_v1.json"
 DEFAULT_DB = ROOT / "build" / "paca_docencia.sqlite"
 NOTEBOOK = ROOT / "tutorials" / "practica-2026-ising-duality" / "ising_duality_codebook.ipynb"
 CORE_DIR = ROOT / "tutorials" / "practica-2026-ising-duality"
+SCHEDULE = ROOT / "ccms" / "paca_agenda_calendar_qml_2026_2027.json"
+CONNECTOR_NET = ROOT / "ccms" / "konnektia_qquapp_moog_quazris_course_connectors_v1.json"
+NAVIGATION = ROOT / "ccms" / "sigil_course_navigation_v1.json"
 
 
 def load_manifest() -> dict[str, Any]:
     return json.loads(MANIFEST.read_text(encoding="utf-8"))
+
+
+def load_schedule() -> dict[str, Any]:
+    return json.loads(SCHEDULE.read_text(encoding="utf-8"))
+
+
+def load_connector_network() -> dict[str, Any]:
+    return json.loads(CONNECTOR_NET.read_text(encoding="utf-8"))
+
+
+def load_navigation_module():
+    sys.path.insert(0, str(ROOT / "tools"))
+    import sigil_toc
+    return sigil_toc
+
+
+def event_datetime(event: dict[str, Any], timezone: str, field: str) -> datetime:
+    return datetime.fromisoformat(
+        f"{event['date']}T{event[field]}:00"
+    ).replace(tzinfo=ZoneInfo(timezone))
+
+
+def validate_schedule(data: dict[str, Any]) -> None:
+    events = data["events"]
+    ids = [event["id"] for event in events]
+    if len(ids) != len(set(ids)):
+        raise ValueError("duplicate schedule event id")
+    tz = data["timezone"]
+    previous: datetime | None = None
+    for event in events:
+        start = event_datetime(event, tz, "start")
+        end = event_datetime(event, tz, "end")
+        if end <= start:
+            raise ValueError(f"invalid event duration: {event['id']}")
+        if previous is not None and start < previous:
+            raise ValueError(f"schedule not in chronological order: {event['id']}")
+        previous = start
+    if data["authority"].get("external_write_performed") is not False:
+        raise ValueError("schedule source must not self-certify external writes")
+
+
+def validate_connector_network(data: dict[str, Any]) -> None:
+    layer_ids = [layer["id"] for layer in data["layers"]]
+    if len(layer_ids) != len(set(layer_ids)):
+        raise ValueError("duplicate connector layer")
+    known = set(layer_ids) | {"PACA_AGENDA", "PACA_CALENDAR", "WML", "CCMS"}
+    for name, localizer in data["localizers"].items():
+        source = ROOT / localizer["source"]
+        if not source.exists():
+            raise ValueError(f"connector localizer {name} missing source: {source}")
+        unknown = set(localizer["route"]) - known
+        if unknown:
+            raise ValueError(f"connector localizer {name} has unknown route stages: {sorted(unknown)}")
+    schedule = load_schedule()
+    if data["schedule_binding"]["event_count"] != len(schedule["events"]):
+        raise ValueError("connector schedule event-count drift")
+    if data["authority"].get("connector_effects_executed") is not False:
+        raise ValueError("connector source must remain effect-free")
+
+
+def validate_toc() -> None:
+    sigil_toc = load_navigation_module()
+    data = sigil_toc.load_navigation()
+    errors = sigil_toc.validate_navigation(data)
+    if errors:
+        raise ValueError("TOC/navigation errors: " + "; ".join(errors))
+
+
+def filter_events(
+    schedule: dict[str, Any],
+    *,
+    teacher: str | None = None,
+    from_date: str | None = None,
+    to_date: str | None = None,
+) -> list[dict[str, Any]]:
+    events = list(schedule["events"])
+    if teacher:
+        needle = teacher.casefold()
+        events = [
+            event for event in events
+            if needle in (event.get("teacher") or "").casefold()
+        ]
+    if from_date:
+        events = [event for event in events if event["date"] >= from_date]
+    if to_date:
+        events = [event for event in events if event["date"] <= to_date]
+    return events
+
+
+def event_line(event: dict[str, Any]) -> str:
+    teacher = event.get("teacher") or "TBD"
+    kind = event.get("type") or "TBD"
+    return (
+        f"{event['date']} {event['start']}-{event['end']}  "
+        f"{teacher}  |  {kind}"
+    )
+
+
+def ics_escape(value: str) -> str:
+    return (
+        value.replace("\\", "\\\\")
+        .replace(";", "\\;")
+        .replace(",", "\\,")
+        .replace("\n", "\\n")
+    )
+
+
+def schedule_to_ics(schedule: dict[str, Any]) -> str:
+    tz = schedule["timezone"]
+    rows = [
+        "BEGIN:VCALENDAR",
+        "VERSION:2.0",
+        "PRODID:-//PACA DOCENCIA//UIMP QML//EN",
+        "CALSCALE:GREGORIAN",
+        "METHOD:PUBLISH",
+    ]
+    for event in schedule["events"]:
+        teacher = event.get("teacher") or "TBD"
+        kind = event.get("type") or "TBD"
+        summary = f"{schedule['course']} — {kind} — {teacher}"
+        rows.extend(
+            [
+                "BEGIN:VEVENT",
+                f"UID:{event['id']}@uimpintrotoquantumai",
+                f"DTSTART;TZID={tz}:{event['date'].replace('-', '')}T{event['start'].replace(':', '')}00",
+                f"DTEND;TZID={tz}:{event['date'].replace('-', '')}T{event['end'].replace(':', '')}00",
+                f"SUMMARY:{ics_escape(summary)}",
+                f"DESCRIPTION:{ics_escape('PACA Agenda public course projection')}",
+                "END:VEVENT",
+            ]
+        )
+    rows.append("END:VCALENDAR")
+    return "\r\n".join(rows) + "\r\n"
 
 
 def validate_dag(data: dict[str, Any]) -> list[str]:
@@ -270,6 +408,12 @@ def query_db(path: Path, sql: str) -> None:
 def cmd_preworkflow(data: dict[str, Any], db_path: Path) -> None:
     validate_manifest(data)
     print("[pass] manifest + DAG")
+    validate_toc()
+    print("[pass] typed TOC/navigation")
+    validate_schedule(load_schedule())
+    print("[pass] PACA Agenda/Calendar schedule")
+    validate_connector_network(load_connector_network())
+    print("[pass] KONNEKTIA/QQUAPP/MOOG/KUIR/QUAZRIS connector network")
     science_smoke()
     print("[pass] scientific core")
     notebook_smoke()
@@ -290,6 +434,29 @@ def main() -> int:
     sub.add_parser("notebook-smoke")
     sub.add_parser("cocycle")
     sub.add_parser("preworkflow")
+    sub.add_parser("toc-check")
+    sub.add_parser("toc")
+    loc = sub.add_parser("localize")
+    loc.add_argument("route_id")
+
+    ag = sub.add_parser("agenda")
+    ag.add_argument("--teacher")
+    ag.add_argument("--from-date")
+    ag.add_argument("--to-date")
+
+    cal = sub.add_parser("calendar")
+    cal.add_argument("--ics", type=Path)
+
+    kon = sub.add_parser("konnektia")
+    kon.add_argument("localizer", nargs="?", choices=("agenda", "calendar", "browser", "knowledge"))
+
+    c42 = sub.add_parser("click42")
+    c42.add_argument(
+        "surface",
+        nargs="?",
+        choices=("toc", "agenda", "calendar", "codebook", "research", "connectors"),
+    )
+
     for port in ("click", "clit", "zelda", "poles", "kit", "qit", "git", "jauria", "browser", "bind"):
         sub.add_parser(port)
 
@@ -315,6 +482,66 @@ def main() -> int:
         print("notebook smoke passed")
     elif args.command == "cocycle":
         print_cocycle(data)
+    elif args.command == "toc-check":
+        validate_toc()
+        print("typed TOC/navigation valid")
+    elif args.command == "toc":
+        sigil_toc = load_navigation_module()
+        sigil_toc.print_atlas(sigil_toc.load_navigation())
+    elif args.command == "localize":
+        sigil_toc = load_navigation_module()
+        print(json.dumps(
+            sigil_toc.route(sigil_toc.load_navigation(), args.route_id),
+            indent=2,
+            sort_keys=True,
+        ))
+    elif args.command == "agenda":
+        schedule = load_schedule()
+        validate_schedule(schedule)
+        for event in filter_events(
+            schedule,
+            teacher=args.teacher,
+            from_date=args.from_date,
+            to_date=args.to_date,
+        ):
+            print(event_line(event))
+    elif args.command == "calendar":
+        schedule = load_schedule()
+        validate_schedule(schedule)
+        payload = schedule_to_ics(schedule)
+        if args.ics:
+            args.ics.parent.mkdir(parents=True, exist_ok=True)
+            args.ics.write_text(payload, encoding="utf-8", newline="")
+            print(args.ics)
+        else:
+            print(payload, end="")
+    elif args.command == "konnektia":
+        network = load_connector_network()
+        validate_connector_network(network)
+        if args.localizer:
+            print(json.dumps(network["localizers"][args.localizer], indent=2, sort_keys=True))
+        else:
+            for name, localizer in network["localizers"].items():
+                print(f"{name}: {' -> '.join(localizer['route'])} -> {localizer['output']}")
+    elif args.command == "click42":
+        surface = args.surface
+        if surface is None:
+            print("toc\tagenda\tcalendar\tcodebook\tresearch\tconnectors")
+        elif surface == "toc":
+            print("README.md#1-table-of-contents")
+        elif surface == "agenda":
+            for event in filter_events(load_schedule()):
+                print(event_line(event))
+        elif surface == "calendar":
+            print("python tools/koko_docencia.py calendar --ics build/qml_2026_2027.ics")
+        elif surface == "codebook":
+            print(NOTEBOOK.relative_to(ROOT))
+        elif surface == "research":
+            print("docs/teaching/RESEARCH_SYNC_TFG_TFM_PHD_V1.md")
+        elif surface == "connectors":
+            network = load_connector_network()
+            for name, localizer in network["localizers"].items():
+                print(f"{name}: {' -> '.join(localizer['route'])}")
     elif args.command in {"click", "clit", "zelda", "poles", "kit", "qit", "git", "jauria", "browser", "bind"}:
         print_port(data, args.command)
     elif args.command == "db-build":
