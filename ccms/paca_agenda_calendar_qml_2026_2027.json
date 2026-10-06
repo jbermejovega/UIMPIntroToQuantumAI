@@ -4,7 +4,9 @@
   "timezone": "Europe/Madrid",
   "course": "Machine Learning",
   "authority": {
-    "source": "user_supplied_schedule",
+    "source": "public_projection_of_sigilbook_zero_source",
+    "zero_source_repository": "jbermejovega/sigilbook",
+    "zero_source_path": "pacagenda/calendario/UIMP_QML_2026_2027_PACA_AGENDA_CALENDAR_V1.json",
     "repository_projection": "jbermejovega/UIMPIntroToQuantumAI",
     "semantic_agenda": "PACA_AGENDA_CANONICAL_V1",
     "calendar_projection": "PACA_CALENDAR_QQUAPP_RELATIONAL_WORKTREES_V1",
