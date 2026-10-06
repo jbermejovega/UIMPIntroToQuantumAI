@@ -45,6 +45,19 @@
       "type": "document",
       "href": "../docs/teaching/RESEARCH_SYNC_TFG_TFM_PHD_V1.md",
       "localizer": "research"
+    },
+    {
+      "id": "calendar",
+      "type": "calendar_projection",
+      "href": "../calendar/qml_2026_2027.ics",
+      "source": "../ccms/paca_agenda_calendar_qml_2026_2027.json",
+      "localizer": "calendar"
+    },
+    {
+      "id": "connectors",
+      "type": "connector_superlattice",
+      "href": "../ccms/konnektia_qquapp_moog_quazris_course_connectors_v1.json",
+      "localizer": "knowledge"
     }
   ],
   "rulezero": {
