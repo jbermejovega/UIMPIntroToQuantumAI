@@ -1,0 +1,205 @@
+{
+  "id": "PACA_DOCENCIA_SUPERLATTICE_QML_2026_V1",
+  "version": "1.0.0",
+  "status": "candidate",
+  "authority": {
+    "course_repository": "jbermejovega/UIMPIntroToQuantumAI",
+    "policy": "presentation != certification",
+    "source_of_truth": "ccms/paca_docencia_superlattice_v1.json"
+  },
+  "runtime": {
+    "host_contract": "user-space POSIX/Python; no Linux kernel patch required",
+    "preferred_host": "Linux",
+    "python": ">=3.11",
+    "base_dependencies": ["numpy", "matplotlib", "jupyter"],
+    "optional_dependencies": ["pennylane", "qiskit"],
+    "replay_rule": "one error -> one change -> one rerun -> one note"
+  },
+  "syllabus": {
+    "course": "Quantum Machine Learning",
+    "blocks": [
+      {
+        "id": "general-ai",
+        "title": "General introduction to AI",
+        "teachers": ["Juani"],
+        "topics": [
+          "what is learning?",
+          "supervised vs unsupervised learning",
+          "trainability and generalization",
+          "automata / Ising model as the practice spine",
+          "current topics"
+        ]
+      },
+      {
+        "id": "classical-models",
+        "title": "Models (classical)",
+        "teachers": ["Daniel", "David"],
+        "topics": [
+          "PCA [Daniel]",
+          "trees and random forests [Daniel]",
+          "neural networks: feed-forward, recurrent, convolutional [Daniel]",
+          "k-means and clustering [David, 1h]",
+          "support vector machines [David, 1h]"
+        ]
+      },
+      {
+        "id": "qml",
+        "title": "Quantum Machine Learning",
+        "teachers": ["Juani"],
+        "topics": [
+          "quantum advantage",
+          "re-quantization / quantum representations",
+          "quantum-inspired methods",
+          "quantum optimization",
+          "trainability and limits",
+          "duality as a change of representation: Ising/Kramers-Wannier to electric-magnetic examples"
+        ]
+      },
+      {
+        "id": "qml-models",
+        "title": "Quantum Machine Learning Models",
+        "teachers": ["David", "Roberta"],
+        "topics": [
+          "linear algebra (HHL) and linear fitting [David, 1h]",
+          "quantum kernels [David, 1h]",
+          "ML for and with quantum - examples [Roberta, 1h]",
+          "quantum perceptron [Roberta, 1h]",
+          "quantum associative memory [Roberta, 1h]",
+          "quantum reservoir computing [Roberta, 2h]",
+          "hands-on lecture [2h]"
+        ]
+      }
+    ],
+    "exercises": [
+      {"teacher": "Juani", "exercise": "Contextual kernel: classical/quantum Ising model and duality codebook"},
+      {"teacher": "Daniel", "exercise": "Neural networks for entanglement detection (classical)"},
+      {"teacher": "David", "exercise": "SVM classification in classical and quantum feature spaces with PennyLane"},
+      {"teacher": "Roberta", "exercise": "Critical assessment of QNN design"}
+    ]
+  },
+  "practice_2026": {
+    "id": "ising-duality-codebook",
+    "audiences": ["physics", "mathematics", "computer_science"],
+    "learning_targets": [
+      "simulate the classical square-lattice Ising model with local Metropolis updates",
+      "recover the Onsager critical scale and compute the Kramers-Wannier dual coupling",
+      "recognize the Hopfield network as an Ising-like energy model without identifying it with the Onsager lattice model",
+      "solve a small transverse-field Ising model by exact diagonalization",
+      "represent genus-2 Z2 homology sectors as H1(Sigma_2,Z2) ~= Z2^4",
+      "distinguish local spin updates from non-contractible logical/loop operations",
+      "use Montonen-Olive/S-duality as an advanced electric-magnetic strong/weak duality example, not as a Monte Carlo update rule",
+      "construct and validate a contextual kernel from physical/computational observables"
+    ],
+    "evaluation": {
+      "implementation": 0.3,
+      "physics_and_mathematics": 0.3,
+      "kernel_and_data_analysis": 0.2,
+      "critical_interpretation": 0.2
+    }
+  },
+  "repositories": [
+    {
+      "id": "uimp-qai",
+      "repo": "jbermejovega/UIMPIntroToQuantumAI",
+      "role": "canonical_course",
+      "status": "active",
+      "provides": ["syllabus", "tutorials", "codebook", "ccms", "paca_docencia"]
+    },
+    {
+      "id": "fisica-computacional",
+      "repo": "jbermejovega/fisicacomputacional",
+      "role": "upstream_teaching_source",
+      "status": "active",
+      "provides": ["06_Monte_Carlo_Ising", "Modelo Hopfield", "KQC teaching gate"]
+    },
+    {
+      "id": "uimp-102699",
+      "repo": "jbermejovega/UIMP-102699---Machine-learning-and-quantum-computers",
+      "role": "legacy_or_companion_course",
+      "status": "reference",
+      "provides": ["Qiskit tutorial", "variational quantum algorithms"]
+    },
+    {
+      "id": "comp-2526",
+      "repo": "jbermejovega/2526_Computacional",
+      "role": "course_instance",
+      "status": "reference",
+      "provides": ["student-facing computational physics instance"]
+    },
+    {
+      "id": "computacional-workspace",
+      "repo": "jbermejovega/Computacional",
+      "role": "teaching_workspace",
+      "status": "reference",
+      "provides": ["course development materials"]
+    },
+    {
+      "id": "quantum-data-fitting-hhl",
+      "repo": "jbermejovega/quantum-data-fitting-HHL",
+      "role": "historical_reference",
+      "status": "reference",
+      "provides": ["HHL/data-fitting material"]
+    },
+    {
+      "id": "introtoquantumai",
+      "repo": "jbermejovega/introtoquantumai",
+      "role": "reference_textbook_repository",
+      "status": "reference",
+      "provides": ["quantum algorithms/QML lecture-note lineage"]
+    }
+  ],
+  "polykategory": {
+    "objects": [
+      "classical_ising",
+      "onsager_solution",
+      "kramers_wannier_dual",
+      "hopfield_memory",
+      "tfim_quantum_ising",
+      "genus2_homology",
+      "montonen_olive_bridge",
+      "contextual_features",
+      "contextual_kernel",
+      "qml_assessment"
+    ],
+    "polyarrows": [
+      {"id": "classical_observables", "inputs": ["classical_ising", "onsager_solution"], "outputs": ["contextual_features"]},
+      {"id": "duality_context", "inputs": ["classical_ising", "kramers_wannier_dual", "genus2_homology"], "outputs": ["contextual_features"]},
+      {"id": "quantum_context", "inputs": ["tfim_quantum_ising", "montonen_olive_bridge"], "outputs": ["contextual_features"]},
+      {"id": "learning_context", "inputs": ["hopfield_memory", "contextual_features"], "outputs": ["contextual_kernel"]},
+      {"id": "assessment", "inputs": ["contextual_kernel", "contextual_features"], "outputs": ["qml_assessment"]}
+    ]
+  },
+  "devops": {
+    "dag": {
+      "nodes": ["manifest_validate", "science_smoke", "notebook_smoke", "db_materialize", "course_report"],
+      "edges": [
+        ["manifest_validate", "science_smoke"],
+        ["science_smoke", "notebook_smoke"],
+        ["manifest_validate", "db_materialize"],
+        ["notebook_smoke", "course_report"],
+        ["db_materialize", "course_report"]
+      ]
+    },
+    "cocyclic_overlay": {
+      "note": "semantic/review rotation only; these are not scheduler edges",
+      "tau": {
+        "manifest_validate": "science_smoke",
+        "science_smoke": "notebook_smoke",
+        "notebook_smoke": "db_materialize",
+        "db_materialize": "course_report",
+        "course_report": "manifest_validate"
+      }
+    }
+  },
+  "cli_ports": {
+    "CLICK": "resolve executable teaching artifacts and codebooks",
+    "CLIT": "inspect typed interfaces/inputs/outputs without changing authority",
+    "ZELDA": "traverse the guided learning path",
+    "POLES": "inspect dual pairs, dual couplings and topological sectors"
+  },
+  "sources": [
+    {"id": "fisica-computacional-ising", "url": "https://github.com/jbermejovega/fisicacomputacional/tree/main/06_Monte_Carlo_Ising"},
+    {"id": "montonen-olive-review", "url": "https://arxiv.org/abs/hep-th/9608090"},
+    {"id": "ising-reference", "url": "https://encyclopediaofmath.org/index.php?title=Ising_model"}
+  ]
+}
