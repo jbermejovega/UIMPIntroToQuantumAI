@@ -313,7 +313,15 @@
       "rainbow_order_parameters",
       "ccms_tool_facet",
       "kuir_quazris_binding",
-      "moogi_resynthesis_trace"
+      "moogi_resynthesis_trace",
+      "paca_agenda",
+      "paca_calendar",
+      "konnektia",
+      "qquapp",
+      "qquappi",
+      "moog",
+      "moogi",
+      "click42_cli"
     ],
     "polyarrows": [
       {
@@ -400,6 +408,35 @@
           "moogi_resynthesis_trace"
         ],
         "witness": "typed binding with explicit provenance, dual trace and learning error"
+      },
+      {
+        "id": "agenda_to_calendar_connector_projection",
+        "inputs": [
+          "paca_agenda",
+          "paca_calendar"
+        ],
+        "outputs": [
+          "konnektia",
+          "qquapp",
+          "kuir_quazris_binding",
+          "click42_cli"
+        ],
+        "witness": "typed temporal projection; agenda state remains distinct from calendar view and external effects"
+      },
+      {
+        "id": "factorized_connector_superlattice",
+        "inputs": [
+          "konnektia",
+          "qquapp",
+          "qquappi",
+          "moog",
+          "moogi"
+        ],
+        "outputs": [
+          "kuir_quazris_binding",
+          "click42_cli"
+        ],
+        "witness": "context-free route composition; no connector becomes kernel or authority"
       }
     ],
     "pseudofunctorial_maps": [
@@ -444,6 +481,9 @@
         "science_smoke",
         "notebook_smoke",
         "db_materialize",
+        "toc_check",
+        "schedule_check",
+        "connector_check",
         "course_report"
       ],
       "edges": [
@@ -466,6 +506,30 @@
         [
           "db_materialize",
           "course_report"
+        ],
+        [
+          "manifest_validate",
+          "toc_check"
+        ],
+        [
+          "manifest_validate",
+          "schedule_check"
+        ],
+        [
+          "manifest_validate",
+          "connector_check"
+        ],
+        [
+          "toc_check",
+          "course_report"
+        ],
+        [
+          "schedule_check",
+          "course_report"
+        ],
+        [
+          "connector_check",
+          "course_report"
         ]
       ]
     },
@@ -475,7 +539,10 @@
         "manifest_validate": "science_smoke",
         "science_smoke": "notebook_smoke",
         "notebook_smoke": "db_materialize",
-        "db_materialize": "course_report",
+        "db_materialize": "toc_check",
+        "toc_check": "schedule_check",
+        "schedule_check": "connector_check",
+        "connector_check": "course_report",
         "course_report": "manifest_validate"
       }
     }
@@ -490,7 +557,13 @@
     "GIT": "inspect repository/project graph, lineage and release projections",
     "JAURIA": "inspect 1D/2D swarmalator primitives and Kuramoto lifts",
     "BROWSER": "project the live CCMS knowledge base into navigable WML/web views",
-    "BIND": "inspect source binding/debinding/rebinding/rekontra-binding facet"
+    "BIND": "inspect source binding/debinding/rebinding/rekontra-binding facet",
+    "TOC": "validate and inspect the typed course navigation atlas",
+    "LOCALIZE": "resolve a navigation local section to its narrowest interface",
+    "AGENDA": "query PACA Agenda course sessions",
+    "CALENDAR": "project PACA Agenda sessions as calendar/ICS data",
+    "KONNEKTIA": "inspect factorized connector-network plans without effects",
+    "CLICK42": "localize and select the appropriate course tool/surface"
   },
   "sources": [
     {
@@ -621,5 +694,31 @@
       "differential geometry and derived/twisted categorical QML",
       "compositional semantics and research software architecture"
     ]
+  },
+  "temporal_facet": {
+    "schema_id": "PACA_AGENDA_CALENDAR_QML_2026_2027_V1",
+    "source": "ccms/paca_agenda_calendar_qml_2026_2027.json",
+    "timezone": "Europe/Madrid",
+    "event_count": 20,
+    "external_calendar_write_performed": false,
+    "unresolved": [
+      "qml-2027-01-29-1600"
+    ]
+  },
+  "connector_superlattice": {
+    "schema_id": "KONNEKTIA_QQUAPP_QQUAPPI_MOOG_MOOGI_KUIR_QUAZRIS_COURSE_CONNECTOR_SUPERLATTICE_V1",
+    "source": "ccms/konnektia_qquapp_moog_quazris_course_connectors_v1.json",
+    "layers": [
+      "KONNEKTIA",
+      "QQUAPP",
+      "QQUAPPI",
+      "MOOG",
+      "MOOGI",
+      "KUIR",
+      "QUAZRIS",
+      "CLICK42"
+    ],
+    "context_free_factorized": true,
+    "connector_effects_executed": false
   }
 }
