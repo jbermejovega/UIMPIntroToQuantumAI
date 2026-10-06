@@ -5,15 +5,32 @@
   "authority": {
     "course_repository": "jbermejovega/UIMPIntroToQuantumAI",
     "policy": "presentation != certification",
-    "source_of_truth": "ccms/paca_docencia_superlattice_v1.json"
+    "source_of_truth": "ccms/paca_docencia_superlattice_v1.json",
+    "zero_source": {
+      "repository": "jbermejovega/sigilbook",
+      "visibility_contract": "private canonical metaproject; public course repos carry typed release projections only",
+      "authority_transport": false
+    }
   },
   "runtime": {
     "host_contract": "user-space POSIX/Python; no Linux kernel patch required",
     "preferred_host": "Linux",
     "python": ">=3.11",
-    "base_dependencies": ["numpy", "matplotlib", "jupyter"],
-    "optional_dependencies": ["pennylane", "qiskit"],
-    "replay_rule": "one error -> one change -> one rerun -> one note"
+    "base_dependencies": [
+      "numpy",
+      "matplotlib",
+      "jupyter"
+    ],
+    "optional_dependencies": [
+      "pennylane",
+      "qiskit"
+    ],
+    "replay_rule": "one error -> one change -> one rerun -> one note",
+    "sigil4py": {
+      "role": "optional public semantic/replay adapter",
+      "rule": "public codebooks remain scientifically executable without private SIGILBOOK access",
+      "public_cpython_carrier": "jbermejovega/sigil4cpython"
+    }
   },
   "syllabus": {
     "course": "Quantum Machine Learning",
@@ -21,7 +38,9 @@
       {
         "id": "general-ai",
         "title": "General introduction to AI",
-        "teachers": ["Juani"],
+        "teachers": [
+          "Juani"
+        ],
         "topics": [
           "what is learning?",
           "supervised vs unsupervised learning",
@@ -33,7 +52,10 @@
       {
         "id": "classical-models",
         "title": "Models (classical)",
-        "teachers": ["Daniel", "David"],
+        "teachers": [
+          "Daniel",
+          "David"
+        ],
         "topics": [
           "PCA [Daniel]",
           "trees and random forests [Daniel]",
@@ -45,7 +67,9 @@
       {
         "id": "qml",
         "title": "Quantum Machine Learning",
-        "teachers": ["Juani"],
+        "teachers": [
+          "Juani"
+        ],
         "topics": [
           "quantum advantage",
           "re-quantization / quantum representations",
@@ -58,7 +82,10 @@
       {
         "id": "qml-models",
         "title": "Quantum Machine Learning Models",
-        "teachers": ["David", "Roberta"],
+        "teachers": [
+          "David",
+          "Roberta"
+        ],
         "topics": [
           "linear algebra (HHL) and linear fitting [David, 1h]",
           "quantum kernels [David, 1h]",
@@ -71,15 +98,31 @@
       }
     ],
     "exercises": [
-      {"teacher": "Juani", "exercise": "Contextual kernel: classical/quantum Ising model and duality codebook"},
-      {"teacher": "Daniel", "exercise": "Neural networks for entanglement detection (classical)"},
-      {"teacher": "David", "exercise": "SVM classification in classical and quantum feature spaces with PennyLane"},
-      {"teacher": "Roberta", "exercise": "Critical assessment of QNN design"}
+      {
+        "teacher": "Juani",
+        "exercise": "Contextual kernel: classical/quantum Ising model and duality codebook"
+      },
+      {
+        "teacher": "Daniel",
+        "exercise": "Neural networks for entanglement detection (classical)"
+      },
+      {
+        "teacher": "David",
+        "exercise": "SVM classification in classical and quantum feature spaces with PennyLane"
+      },
+      {
+        "teacher": "Roberta",
+        "exercise": "Critical assessment of QNN design"
+      }
     ]
   },
   "practice_2026": {
     "id": "ising-duality-codebook",
-    "audiences": ["physics", "mathematics", "computer_science"],
+    "audiences": [
+      "physics",
+      "mathematics",
+      "computer_science"
+    ],
     "learning_targets": [
       "simulate the classical square-lattice Ising model with local Metropolis updates",
       "recover the Onsager critical scale and compute the Kramers-Wannier dual coupling",
@@ -95,6 +138,22 @@
       "physics_and_mathematics": 0.3,
       "kernel_and_data_analysis": 0.2,
       "critical_interpretation": 0.2
+    },
+    "textbook_format": [
+      "chapter",
+      "mathematical_kernel",
+      "observables",
+      "executable_model",
+      "experiment",
+      "interpretation",
+      "reproducibility_witness",
+      "exercises"
+    ],
+    "public_install": {
+      "path": "tutorials/practica-2026-ising-duality",
+      "command": "python -m pip install -r requirements.txt",
+      "optional_sigil4py": "python -m pip install sigil4py",
+      "caveat": "optional command requires a public sigil4py distribution in the configured package source"
     }
   },
   "repositories": [
@@ -103,49 +162,93 @@
       "repo": "jbermejovega/UIMPIntroToQuantumAI",
       "role": "canonical_course",
       "status": "active",
-      "provides": ["syllabus", "tutorials", "codebook", "ccms", "paca_docencia"]
+      "provides": [
+        "syllabus",
+        "tutorials",
+        "codebook",
+        "ccms",
+        "paca_docencia"
+      ]
     },
     {
       "id": "fisica-computacional",
       "repo": "jbermejovega/fisicacomputacional",
       "role": "upstream_teaching_source",
       "status": "active",
-      "provides": ["06_Monte_Carlo_Ising", "Modelo Hopfield", "KQC teaching gate"]
+      "provides": [
+        "06_Monte_Carlo_Ising",
+        "Modelo Hopfield",
+        "KQC teaching gate"
+      ]
     },
     {
       "id": "uimp-102699",
       "repo": "jbermejovega/UIMP-102699---Machine-learning-and-quantum-computers",
       "role": "legacy_or_companion_course",
       "status": "reference",
-      "provides": ["Qiskit tutorial", "variational quantum algorithms"]
+      "provides": [
+        "Qiskit tutorial",
+        "variational quantum algorithms"
+      ]
     },
     {
       "id": "comp-2526",
       "repo": "jbermejovega/2526_Computacional",
       "role": "course_instance",
       "status": "reference",
-      "provides": ["student-facing computational physics instance"]
+      "provides": [
+        "student-facing computational physics instance"
+      ]
     },
     {
       "id": "computacional-workspace",
       "repo": "jbermejovega/Computacional",
       "role": "teaching_workspace",
       "status": "reference",
-      "provides": ["course development materials"]
+      "provides": [
+        "course development materials"
+      ]
     },
     {
       "id": "quantum-data-fitting-hhl",
       "repo": "jbermejovega/quantum-data-fitting-HHL",
       "role": "historical_reference",
       "status": "reference",
-      "provides": ["HHL/data-fitting material"]
+      "provides": [
+        "HHL/data-fitting material"
+      ]
     },
     {
       "id": "introtoquantumai",
       "repo": "jbermejovega/introtoquantumai",
       "role": "reference_textbook_repository",
       "status": "reference",
-      "provides": ["quantum algorithms/QML lecture-note lineage"]
+      "provides": [
+        "quantum algorithms/QML lecture-note lineage"
+      ]
+    },
+    {
+      "id": "sigilbook-zero-source",
+      "repo": "jbermejovega/sigilbook",
+      "role": "private_zero_source_metaproject",
+      "status": "authority_reference",
+      "provides": [
+        "typed contracts",
+        "pseudofunctorial project seam",
+        "textbook grammar"
+      ],
+      "public_projection_only": true
+    },
+    {
+      "id": "sigil4cpython",
+      "repo": "jbermejovega/sigil4cpython",
+      "role": "public_runtime_compatibility_carrier",
+      "status": "active",
+      "provides": [
+        "public CPython boundary",
+        "Primitive ∩ Plural ∩ QUNO interface"
+      ],
+      "public_projection_only": false
     }
   ],
   "polykategory": {
@@ -159,25 +262,138 @@
       "montonen_olive_bridge",
       "contextual_features",
       "contextual_kernel",
-      "qml_assessment"
+      "qml_assessment",
+      "sigilbook_zero_source",
+      "public_release_projection",
+      "sigil4cpython_boundary",
+      "sigilitas_semantic_kernel",
+      "quazris_dual_proxy",
+      "quno_plural_carrier",
+      "anderson_localization",
+      "aubry_andre_self_dual_chart",
+      "circle_map_mode_locking",
+      "kuramoto_synchronization",
+      "lattice_light_chart",
+      "textbook_codebook"
     ],
     "polyarrows": [
-      {"id": "classical_observables", "inputs": ["classical_ising", "onsager_solution"], "outputs": ["contextual_features"]},
-      {"id": "duality_context", "inputs": ["classical_ising", "kramers_wannier_dual", "genus2_homology"], "outputs": ["contextual_features"]},
-      {"id": "quantum_context", "inputs": ["tfim_quantum_ising", "montonen_olive_bridge"], "outputs": ["contextual_features"]},
-      {"id": "learning_context", "inputs": ["hopfield_memory", "contextual_features"], "outputs": ["contextual_kernel"]},
-      {"id": "assessment", "inputs": ["contextual_kernel", "contextual_features"], "outputs": ["qml_assessment"]}
-    ]
+      {
+        "id": "classical_observables",
+        "inputs": [
+          "classical_ising",
+          "onsager_solution"
+        ],
+        "outputs": [
+          "contextual_features"
+        ]
+      },
+      {
+        "id": "duality_context",
+        "inputs": [
+          "classical_ising",
+          "kramers_wannier_dual",
+          "genus2_homology"
+        ],
+        "outputs": [
+          "contextual_features"
+        ]
+      },
+      {
+        "id": "quantum_context",
+        "inputs": [
+          "tfim_quantum_ising",
+          "montonen_olive_bridge"
+        ],
+        "outputs": [
+          "contextual_features"
+        ]
+      },
+      {
+        "id": "learning_context",
+        "inputs": [
+          "hopfield_memory",
+          "contextual_features"
+        ],
+        "outputs": [
+          "contextual_kernel"
+        ]
+      },
+      {
+        "id": "assessment",
+        "inputs": [
+          "contextual_kernel",
+          "contextual_features"
+        ],
+        "outputs": [
+          "qml_assessment"
+        ]
+      }
+    ],
+    "pseudofunctorial_maps": [
+      {
+        "id": "zero_source_to_public_course",
+        "source": "sigilbook_zero_source",
+        "target": "public_release_projection",
+        "preserves": [
+          "typed interface",
+          "provenance",
+          "replay contract"
+        ],
+        "forbids": [
+          "identity transport",
+          "authority transport",
+          "private source publication"
+        ]
+      },
+      {
+        "id": "course_to_runtime",
+        "source": "public_release_projection",
+        "target": "sigil4cpython_boundary",
+        "preserves": [
+          "public runtime contract",
+          "typed plural/QUNO metadata"
+        ],
+        "forbids": [
+          "CPython private internals as SIGIL contract"
+        ]
+      }
+    ],
+    "pushout_pullback_rule": {
+      "nlab_alignment": "pushout/pullback are universal-property composition schemas; JOIN/MEET names are pedagogical projections unless a witness establishes the identification",
+      "devops_realization": "materialized only through the acyclic execution DAG",
+      "pseudofunctoriality": "composition preserved up to explicit coherence witness; not strict equality by default"
+    }
   },
   "devops": {
     "dag": {
-      "nodes": ["manifest_validate", "science_smoke", "notebook_smoke", "db_materialize", "course_report"],
+      "nodes": [
+        "manifest_validate",
+        "science_smoke",
+        "notebook_smoke",
+        "db_materialize",
+        "course_report"
+      ],
       "edges": [
-        ["manifest_validate", "science_smoke"],
-        ["science_smoke", "notebook_smoke"],
-        ["manifest_validate", "db_materialize"],
-        ["notebook_smoke", "course_report"],
-        ["db_materialize", "course_report"]
+        [
+          "manifest_validate",
+          "science_smoke"
+        ],
+        [
+          "science_smoke",
+          "notebook_smoke"
+        ],
+        [
+          "manifest_validate",
+          "db_materialize"
+        ],
+        [
+          "notebook_smoke",
+          "course_report"
+        ],
+        [
+          "db_materialize",
+          "course_report"
+        ]
       ]
     },
     "cocyclic_overlay": {
@@ -198,8 +414,26 @@
     "POLES": "inspect dual pairs, dual couplings and topological sectors"
   },
   "sources": [
-    {"id": "fisica-computacional-ising", "url": "https://github.com/jbermejovega/fisicacomputacional/tree/main/06_Monte_Carlo_Ising"},
-    {"id": "montonen-olive-review", "url": "https://arxiv.org/abs/hep-th/9608090"},
-    {"id": "ising-reference", "url": "https://encyclopediaofmath.org/index.php?title=Ising_model"}
+    {
+      "id": "fisica-computacional-ising",
+      "url": "https://github.com/jbermejovega/fisicacomputacional/tree/main/06_Monte_Carlo_Ising"
+    },
+    {
+      "id": "montonen-olive-review",
+      "url": "https://arxiv.org/abs/hep-th/9608090"
+    },
+    {
+      "id": "ising-reference",
+      "url": "https://encyclopediaofmath.org/index.php?title=Ising_model"
+    },
+    {
+      "id": "sigilbook-textbook-format",
+      "visibility": "private-source contract only",
+      "path": "books/pluraltype_computational_physics/PLURALTYPE_COMPUTATIONAL_PHYSICS_TEXTBOOK_MASTER_V1.md"
+    },
+    {
+      "id": "sigil4cpython-public-interface",
+      "url": "https://github.com/jbermejovega/sigil4cpython/blob/main/SIGIL_PUBLIC_INTERFACE.md"
+    }
   ]
 }
