@@ -69,19 +69,28 @@ CODEBOOK[executable witness]
 
 Here, **QUNO means plurality without identity collapse**. Distinct physical mechanisms remain distinct even when they are compared through the same pedagogical interface.
 
-## Chapter map
+## Base-course path
 
 1. Classical Ising model and local Metropolis dynamics.
 2. Onsager critical scale and Kramers–Wannier dual coupling.
 3. Hopfield associative memory as an Ising-like energy model.
 4. Transverse-field quantum Ising model.
 5. Genus-2 homology sectors and non-contractible logical loops.
-6. Montonen–Olive as an advanced strong/weak electric–magnetic duality example.
-7. Contextual feature maps and positive-semidefinite kernels.
-8. Localization charts: Anderson and Aubry–André.
-9. Oscillator charts: circle map, Arnold tongues and Kuramoto order.
-10. Comparative lattice-light chart: Bose/Jaynes–Cummings–Hubbard vocabulary.
-11. SIGILITAS / QUAZRIS / QUNO toy polykategory.
+6. Montonen–Olive as an advanced strong/weak electric–magnetic comparison.
+7. Contextual feature maps, PSD kernels and a classical reference.
+8. Critical resource accounting before any quantum-advantage claim.
+
+## Research appendices — not assessed in the base course
+
+The notebook also keeps optional research bridges for TFG/TFM/PhD work:
+
+- Anderson and Aubry–André localization;
+- circle map, Arnold tongues and Kuramoto order;
+- 1D/2D swarmalators;
+- Bose/Jaynes–Cummings–Hubbard vocabulary;
+- SIGILITAS / QUAZRIS / QUNO semantic adapters.
+
+These sections are synchronized through [Research Sync](../../docs/teaching/RESEARCH_SYNC_TFG_TFM_PHD_V1.md), not through the ordinary course syllabus.
 
 ## Scientific boundary
 
