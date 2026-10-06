@@ -1,0 +1,37 @@
+{
+  "schema": "SIGIL_WML_COURSE_VIEW_V1",
+  "source": "../ccms/paca_docencia_superlattice_v1.json",
+  "title": "UIMP Quantum Machine Learning",
+  "views": [
+    {
+      "id": "start",
+      "type": "document",
+      "href": "../PACADOC.md"
+    },
+    {
+      "id": "syllabus",
+      "type": "ccms_projection",
+      "selector": "$.syllabus"
+    },
+    {
+      "id": "codebook_2026",
+      "type": "notebook",
+      "href": "../tutorials/practica-2026-ising-duality/ising_duality_codebook.ipynb"
+    },
+    {
+      "id": "koko_cli",
+      "type": "cli",
+      "command": "python tools/koko_docencia.py"
+    },
+    {
+      "id": "knowledge",
+      "type": "database_projection",
+      "command": "python tools/koko_docencia.py db-build"
+    }
+  ],
+  "rulezero": {
+    "source_of_truth": "CCMS manifest",
+    "browser_is_projection": true,
+    "presentation_is_certification": false
+  }
+}
