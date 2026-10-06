@@ -72,9 +72,9 @@ The use of package managers in Windows helps to install and uninstall packages t
 
 * **Winget.** Microsoft’s official package manager. We must install it (if not available) to update the PowerShell console and install Chocolatey using [these instructions](https://learn.microsoft.com/es-es/windows/package-manager/winget/).
 
-* **The Powershell console.** Not a package manager, but the console that we will use most times to install packages with Chocolatey. To install Chocolatey, the recommended option is to update Microsoft’s PowerShell using Winget. First install PowerShell and then upgrade it using the official [installation instructions](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.4) (see inline figure).![](./pasted+image+0.png)
+* **The Powershell console.** Not a package manager, but the console that we will use most times to install packages with Chocolatey. To install Chocolatey, the recommended option is to update Microsoft’s PowerShell using Winget. First install PowerShell and then upgrade it using the official [installation instructions](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.4) (see inline figure).![](../../pasted+image+0.png)
 
-* **Chocolatey:** a package manager that includes a wide variety of third-party software tools,, such as Visual Studio Code, the GCC/G++ compiler and GDB debugger through MinGW, Python and Python distros like Anaconda, Git. To install Chocolatey you should upgrade Powershell to its latest version and follow the [official installation instructions](https://chocolatey.org/install)  (see inline figure) on the last version of PowerShell (admin mode).![](./pasted+image+0+1.png)
+* **Chocolatey:** a package manager that includes a wide variety of third-party software tools,, such as Visual Studio Code, the GCC/G++ compiler and GDB debugger through MinGW, Python and Python distros like Anaconda, Git. To install Chocolatey you should upgrade Powershell to its latest version and follow the [official installation instructions](https://chocolatey.org/install)  (see inline figure) on the last version of PowerShell (admin mode).![](../../pasted+image+0+1.png)
 
 Once Chocolatey is running, we can install our remaining packages opening PowerShell in admin mode and using the command: choco install PACKAGE.
 
@@ -99,7 +99,7 @@ The following cheatsheet will be useful:
 ### 3.4.2 Default Terminal
 
 We will choose git bash as our default terminal for our projects. To this end, we open the command palette and type **Terminal: Select Default Profile &gt; git bash**:
-![](./pasted+image+0+2.png)![](./pasted+image+0+3.png)
+![](../../pasted+image+0+2.png)![](../../pasted+image+0+3.png)
 ### 3.4.3 VS Code Extensions
 
 We will also install several VS Code Extensions to finish setting up our IDE:
@@ -135,9 +135,9 @@ To use environments, we should choose a preferred location in which to store inf
 2. Conda environments can't be automatically activated in the VS Code Integrated Terminal if the default shell is set to PowerShell. To change the shell, see [Integrated terminal - Terminal profiles](https://code.visualstudio.com/docs/terminal/profiles).
 3. You can manually specify the path to the conda executable to use for activation (version 4.4+). To do so, open the Command Palette (Ctrl+Shift+P) and run Preferences: Open User Settings. Then set python.condaPath, which is in the Python extension section of User Settings, with the appropriate path.
 
-![](./pasted+image+0+4.png)
+![](../../pasted+image+0+4.png)
 
-![](./pasted+image+0+5.png)
+![](../../pasted+image+0+5.png)
 
 ## 3.6 Version control with Git
 
@@ -157,7 +157,7 @@ Once you have a GitHub account, [you should link VS Code to your GitHub account 
 ## 4.1 Create a Python environment
 
 We recommend that you use Python virtual environments (opens in a new tab) to separate Python packages used in this lecture from other Pyton installations in your computer. To this end, access your command palette and create a conda environment.
-![](./pasted+image+0+6.png)![](./pasted+image+0+7.png)Once created, we will activate it using the command **conda activate .conda**
+![](../../pasted+image+0+6.png)![](../../pasted+image+0+7.png)Once created, we will activate it using the command **conda activate .conda**
 
 ## 4.2 Installing Python packages
 
