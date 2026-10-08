@@ -1,0 +1,83 @@
+name: CI
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  ci:
+    name: ci
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install optional project dependencies
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m pip install --upgrade pip
+          if [ -f pyproject.toml ]; then
+            python -m pip install -e .
+          fi
+          if [ -f requirements.txt ]; then
+            python -m pip install -r requirements.txt
+          fi
+          if find . -path ./.git -prune -o -path ./venv -prune -o -name "test_*.py" -print -quit | grep -q .; then
+            python -m pip install pytest
+          fi
+
+      - name: Compile Python sources when present
+        shell: bash
+        run: |
+          set -euo pipefail
+          mapfile -t python_files < <(find . -path ./.git -prune -o -path ./venv -prune -o -name "*.py" -print)
+          if [ "${#python_files[@]}" -eq 0 ]; then
+            echo "No Python files found; compile check skipped."
+            exit 0
+          fi
+          python -m compileall -q "${python_files[@]}"
+
+      - name: Run pytest when tests are present
+        shell: bash
+        run: |
+          set -euo pipefail
+          if find . -path ./.git -prune -o -path ./venv -prune -o -name "test_*.py" -print -quit | grep -q .; then
+            python -m pytest -q
+          else
+            echo "No Python tests found; pytest skipped."
+          fi
+
+      - name: Validate Markdown files exist and are readable
+        shell: bash
+        run: |
+          set -euo pipefail
+          mapfile -t markdown_files < <(find . -path ./.git -prune -o -name "*.md" -print)
+          if [ "${#markdown_files[@]}" -eq 0 ]; then
+            echo "No Markdown files found."
+            exit 0
+          fi
+          for file in "${markdown_files[@]}"; do
+            test -s "$file"
+          done
+          printf 'Validated %s Markdown files.\n' "${#markdown_files[@]}"
