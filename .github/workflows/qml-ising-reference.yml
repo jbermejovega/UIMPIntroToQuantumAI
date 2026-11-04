@@ -26,7 +26,6 @@ jobs:
         uses: actions/setup-python@v6
         with:
           python-version: "3.12.16"
-          cache: pip
 
       - name: Install pinned scientific stack
         run: |
