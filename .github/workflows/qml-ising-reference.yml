@@ -1,0 +1,119 @@
+name: QML Ising Reference · QQUAPP Pydantic 2
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: qml-ising-reference-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  exact-two-spin-reference:
+    name: Typed reference and independent diagonalizations
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Set up pinned Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12.16"
+          cache: pip
+
+      - name: Install pinned scientific stack
+        run: |
+          python -m pip install --disable-pip-version-check \
+            numpy==2.5.4 \
+            scipy==1.18.1 \
+            sympy==1.14.0 \
+            pydantic==2.14.2
+
+      - name: Validate Pydantic 2 spec, operator signs, and exact spectrum
+        run: |
+          python - <<'PY'
+          from math import sqrt
+
+          import numpy as np
+          import scipy.linalg
+          import sympy as sp
+          from pydantic import BaseModel, ConfigDict, Field
+
+          class IsingReferenceSpec(BaseModel):
+              """Frozen, closed input contract for the documented two-spin case."""
+
+              model_config = ConfigDict(
+                  extra="forbid",
+                  frozen=True,
+                  allow_inf_nan=False,
+              )
+
+              J: float = Field(default=1.0, description="ZZ coupling")
+              h: float = Field(default=0.5, description="transverse field")
+              tolerance: float = Field(default=1e-12, gt=0)
+
+          spec = IsingReferenceSpec()
+          X = np.array([[0.0, 1.0], [1.0, 0.0]])
+          Z = np.array([[1.0, 0.0], [0.0, -1.0]])
+          I = np.eye(2)
+
+          # H = -J (Z⊗Z) - h (X⊗I + I⊗X), in |00>,|01>,|10>,|11> order.
+          H = -spec.J * np.kron(Z, Z) - spec.h * (
+              np.kron(X, I) + np.kron(I, X)
+          )
+          expected_operator = np.array(
+              [
+                  [-1.0, -0.5, -0.5, 0.0],
+                  [-0.5, 1.0, 0.0, -0.5],
+                  [-0.5, 0.0, 1.0, -0.5],
+                  [0.0, -0.5, -0.5, -1.0],
+              ]
+          )
+          np.testing.assert_allclose(
+              H, expected_operator, rtol=0.0, atol=spec.tolerance
+          )
+
+          expected_numeric = np.array([-sqrt(2), -1.0, 1.0, sqrt(2)])
+          numpy_spectrum = np.linalg.eigvalsh(H)
+          scipy_spectrum = scipy.linalg.eigh(H, eigvals_only=True)
+          np.testing.assert_allclose(
+              numpy_spectrum, expected_numeric, rtol=0.0, atol=spec.tolerance
+          )
+          np.testing.assert_allclose(
+              scipy_spectrum, expected_numeric, rtol=0.0, atol=spec.tolerance
+          )
+
+          # Independent exact construction: 1 and 0.5 become exact rationals.
+          J_exact = sp.Rational(str(spec.J))
+          h_exact = sp.Rational(str(spec.h))
+          X_exact = sp.Matrix([[0, 1], [1, 0]])
+          Z_exact = sp.Matrix([[1, 0], [0, -1]])
+          I_exact = sp.eye(2)
+          H_exact = -J_exact * sp.kronecker_product(Z_exact, Z_exact) - h_exact * (
+              sp.kronecker_product(X_exact, I_exact)
+              + sp.kronecker_product(I_exact, X_exact)
+          )
+          exact_spectrum = H_exact.eigenvals()
+          expected_exact = {-sp.sqrt(2), sp.Integer(-1), sp.Integer(1), sp.sqrt(2)}
+          assert set(exact_spectrum) == expected_exact, exact_spectrum
+          assert all(multiplicity == 1 for multiplicity in exact_spectrum.values())
+
+          print("Pydantic 2 spec: valid")
+          print("Operator entries: valid (signs and coupling positions)")
+          print("NumPy spectrum:", numpy_spectrum.tolist())
+          print("SciPy spectrum:", scipy_spectrum.tolist())
+          print("SymPy exact spectrum:", sorted(map(str, exact_spectrum)))
+          print(
+              "Versions:",
+              f"numpy={np.__version__}",
+              f"scipy={scipy.__version__}",
+              f"sympy={sp.__version__}",
+          )
+          PY
