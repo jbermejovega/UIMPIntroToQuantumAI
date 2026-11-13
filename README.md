@@ -9,6 +9,7 @@ instructions, Python/Jupyter setup, tutorials and exercises. The complete
 course guide follows below; it must not be replaced by a table of contents.
 
 - [PACADOC: first-user guide](PACADOC.md) — accessibility, reproducible debugging and environment setup.
+- [PACA DOCENCIA · Codebooks y lecture notes · 13-11-2026](paca_docencia/codebooks_20261113/README.md) — cuatro notebooks nuevos, cuatro notas de clase y CI nativa.
 - [SIGIL stack normalization](docs/sigil/SIGIL_STACK_NORMALIZATION.md) — optional technical integration notes.
 - [Course contents](#1-table-of-contents) — original course text and tutorials.
 
