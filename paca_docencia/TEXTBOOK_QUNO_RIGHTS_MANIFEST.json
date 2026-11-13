@@ -1,0 +1,59 @@
+{
+  "schema": "paca.docencia.quno.textbook_rights.v1",
+  "date": "2026-11-13",
+  "protected_identity": "PIORNALEGO_ES_CANON",
+  "federation": {
+    "canonical": "jbermejovega/sigilbook",
+    "public_projection": "jbermejovega/Quantum-AI-for-Queens",
+    "synthgothhub": "SIGILBOOK internal federation adapter; separate repository not verified",
+    "matrix_riot": "export profile only; no homeserver or Matrix room verified"
+  },
+  "textbook": {
+    "working_title": "SIGILBOOK · PACA Lecture Notes & Codebooks",
+    "publication_state": "FORTHCOMING",
+    "editorial_author": "JJBV",
+    "original_contributions_default": "ALL_RIGHTS_RESERVED_SUBJECT_TO_EXISTING_GRANTS",
+    "copyright_notice": "paca_docencia/COPYRIGHT_TEXTBOOK_QUNO.md"
+  },
+  "licences": {
+    "sigilbook_root": "MIT for software and associated documentation to the extent legally applicable; existing grants unaffected",
+    "sigilbook_educative_specific": "Apache-2.0 OR GPL-3.0-only for EDUCATIVE_MODULES/PLURAL_STUDENT_SUPERKLASS scope",
+    "queens_root": "NO_ROOT_LICENSE_OBSERVED",
+    "third_party": "SOURCE_SPECIFIC_REVIEW"
+  },
+  "collections": [
+    {
+      "id": "four_reference",
+      "path": "paca_docencia/codebooks_20261113",
+      "notebook_count": 4,
+      "note_count": 4,
+      "status": "PUBLIC_MAIN",
+      "scientific_evidence": "NATIVE_REFERENCE_RUN_REPORTED"
+    },
+    {
+      "id": "nine_exercises",
+      "path": "paca_docencia/paca_ppl_lecture_codebooks_20261113",
+      "notebook_count": 9,
+      "note_count": 9,
+      "status": "PR_7_DRAFT",
+      "scientific_evidence": "SCAFFOLD_ONLY_NOT_EXECUTED"
+    },
+    {
+      "id": "source_originals",
+      "path": "SIGILBOOK NUKLEA local ZIP",
+      "notebook_count": 9,
+      "status": "HOLD_SOURCE_IMPORT_RIGHTS"
+    }
+  ],
+  "rights_types": [
+    "TEXTBOOK_ORIGINAL",
+    "SOFTWARE",
+    "THIRD_PARTY",
+    "PUBLIC_TEACHING_VIEW",
+    "INTERNAL_SOURCE"
+  ],
+  "rights_gate": "HOLD_QUNO_RIGHTS_FOR_UNCLEARED_SOURCES",
+  "no_implicit_license_grant": true,
+  "no_automatic_author_identity_transfer": true,
+  "no_automatic_publication_of_private_source": true
+}
