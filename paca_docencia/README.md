@@ -6,10 +6,13 @@ Este es el punto de entrada de PACA DOCENCIA para `Quantum-AI-for-Queens`. Se ma
 
 ## Colecciones
 
+[Ver los 17 notebooks Jupyter desde la portada](../README.md#jupyter-notebooks--start-here) · [Portada web](../site/index.html#jupyter-notebooks).
+
+
 | Serie | Contenido | Disponibilidad |
 |---|---|---|
 | [Codebooks de referencia](codebooks_20261113/README.md) | 4 notebooks + 4 lecture notes; QAOA/MaxCut, TFIM, MPS/SVD, HHL/control clásico | `main` |
-| [Unidades ampliadas](paca_ppl_lecture_codebooks_20261113/README.md) | 9 notas + 9 nuevos notebooks de **actividades**; no son copias de fuentes originales | [PR #7](https://github.com/jbermejovega/Quantum-AI-for-Queens/pull/7), draft |
+| [Unidades ampliadas](paca_ppl_lecture_codebooks_20261113/README.md) | 9 notas + 9 notebooks de **actividades guiadas**; no son copias de fuentes originales ni soluciones completas | `main` (PR #7 fusionada) |
 | [QUAZRIS MPI](paca_ppl_lecture_codebooks_20261113/QUAZRIS_MPI_PRACTICA.md) | Distribución determinista de nueve actividades por rango lógico | Plan, no ejecución MPI |
 | [PYKARA/SWALLOW Pydantic 2](paca_ppl_lecture_codebooks_20261113/PYKARA_SWALLOW.md) | Manifestación tipada, controles estructurales y línea Monty | Plan, no ejecución Monty |
 | [Tutoriales históricos](../tutorials) | Material anterior del curso | `main`; preservado |
