@@ -1,49 +1,11 @@
- [2026] JJBV. Todos los derechos reservados.
-Uso para estudiantes y autoaprendizaje: Se autoriza la consulta, descarga y ejecución de estos materiales exclusivamente para el estudio personal y el aprendizaje individual. Uso docente e institucional: Queda prohibida la reproducción, distribución, comunicación pública, proyección sistemática en aula o incorporación sustancial de estos materiales (textos, figuras, presentaciones o notebooks) en asignaturas, cursos o programas impartidos por terceros sin licencia o autorización expresa por escrito del autor, fuera de los límites legales del derecho de cita. Contacto para licencias docentes: [jbermejovega@go.ugr.es].
 
 # Introduction to Quantum Artificial Intelligence
 
 **Jara Juana Bermejo Vega**
 
-## Jupyter notebooks — start here
+ [2026] JJBV. Todos los derechos reservados.
+Uso para estudiantes y autoaprendizaje: Se autoriza la consulta, descarga y ejecución de estos materiales exclusivamente para el estudio personal y el aprendizaje individual. Uso docente e institucional: Queda prohibida la reproducción, distribución, comunicación pública, proyección sistemática en aula o incorporación sustancial de estos materiales (textos, figuras, presentaciones o notebooks) en asignaturas, cursos o programas impartidos por terceros sin licencia o autorización expresa por escrito del autor, fuera de los límites legales del derecho de cita. Contacto para licencias docentes: [jbermejovega@go.ugr.es].
 
-**17 directly linked notebooks on `main`:** 4 numerical reference notebooks, 9 guided PACA DOCENCIA activity notebooks, and 4 existing course notebooks. All paths below point to real `.ipynb` files in this repository.
-
-### Numerical reference notebooks · 4
-
-| Notebook | Paired lecture note |
-|---|---|
-| [QAOA / MaxCut](paca_docencia/codebooks_20261113/codebooks/01_qaoa_maxcut_baseline.ipynb) | [Read note](paca_docencia/codebooks_20261113/lecture_notes/01_qaoa_maxcut_baseline.md) |
-| [TFIM exact reference](paca_docencia/codebooks_20261113/codebooks/02_tfim_exact_reference.ipynb) | [Read note](paca_docencia/codebooks_20261113/lecture_notes/02_tfim_exact_reference.md) |
-| [MPS / SVD compression](paca_docencia/codebooks_20261113/codebooks/03_mps_svd_compression.ipynb) | [Read note](paca_docencia/codebooks_20261113/lecture_notes/03_mps_svd_compression.md) |
-| [HHL classical control](paca_docencia/codebooks_20261113/codebooks/04_hhl_classical_control.ipynb) | [Read note](paca_docencia/codebooks_20261113/lecture_notes/04_hhl_classical_control.md) |
-
-### PACA DOCENCIA guided Jupyter activities · 9
-
-These **nine notebooks are exercise scaffolds**, not completed computational solutions or copies of the original research notebooks.
-
-| Unit | Notebook | Lecture note |
-|---|---|---|
-| 01 QAOA / MaxCut | [Open Jupyter](paca_docencia/paca_ppl_lecture_codebooks_20261113/codebooks/01.ipynb) | [Read note](paca_docencia/paca_ppl_lecture_codebooks_20261113/lecture_notes/01.md) |
-| 02 VQE / 1D TFIM | [Open Jupyter](paca_docencia/paca_ppl_lecture_codebooks_20261113/codebooks/02.ipynb) | [Read note](paca_docencia/paca_ppl_lecture_codebooks_20261113/lecture_notes/02.md) |
-| 03 Tensor-network circuits | [Open Jupyter](paca_docencia/paca_ppl_lecture_codebooks_20261113/codebooks/03.ipynb) | [Read note](paca_docencia/paca_ppl_lecture_codebooks_20261113/lecture_notes/03.md) |
-| 04 Quimb DMRG / TFIM | [Open Jupyter](paca_docencia/paca_ppl_lecture_codebooks_20261113/codebooks/04.ipynb) | [Read note](paca_docencia/paca_ppl_lecture_codebooks_20261113/lecture_notes/04.md) |
-| 05 Variational depth / AAVQE | [Open Jupyter](paca_docencia/paca_ppl_lecture_codebooks_20261113/codebooks/05.ipynb) | [Read note](paca_docencia/paca_ppl_lecture_codebooks_20261113/lecture_notes/05.md) |
-| 06 QTT image classification | [Open Jupyter](paca_docencia/paca_ppl_lecture_codebooks_20261113/codebooks/06.ipynb) | [Read note](paca_docencia/paca_ppl_lecture_codebooks_20261113/lecture_notes/06.md) |
-| 07 QUANTIC MPS / regression | [Open Jupyter](paca_docencia/paca_ppl_lecture_codebooks_20261113/codebooks/07.ipynb) | [Read note](paca_docencia/paca_ppl_lecture_codebooks_20261113/lecture_notes/07.md) |
-| 08 MPO / DMRG / QUBO | [Open Jupyter](paca_docencia/paca_ppl_lecture_codebooks_20261113/codebooks/08.ipynb) | [Read note](paca_docencia/paca_ppl_lecture_codebooks_20261113/lecture_notes/08.md) |
-| 09 QUBO regression: critical reading | [Open Jupyter](paca_docencia/paca_ppl_lecture_codebooks_20261113/codebooks/09.ipynb) | [Read note](paca_docencia/paca_ppl_lecture_codebooks_20261113/lecture_notes/09.md) |
-
-### Existing course notebooks · 4
-
-- [Ising / duality / contextual kernels](tutorials/practica-2026-ising-duality/ising_duality_codebook.ipynb)
-- [HHL tutorial](tutorials/tutorial1-quantum-linear-solvers/hhl_tutorial.ipynb)
-- [Quantum data fitting](tutorials/tutorial2-quantum-linear-solvers-and-data-fitting/data-fitting.ipynb)
-- [HHL sandbox](tutorials/tutorial2-quantum-linear-solvers-and-data-fitting/hhl-sandbox.ipynb)
-
-**Browse the full [PACA DOCENCIA catalogue](paca_docencia/README.md)** · [Nine-unit guide](paca_docencia/paca_ppl_lecture_codebooks_20261113/README.md) · [Four-reference guide](paca_docencia/codebooks_20261113/README.md) · [Rights and teaching-use conditions](paca_docencia/USO_DOCENTE_BAJO_LICENCIA.md).
-
-To execute an activity, open its `.ipynb` file on GitHub, download it or clone the repository, and open it in JupyterLab. The 9 guided units contain exercises to implement, not certified research outputs.
 
 ## 1 Table of Contents
 
