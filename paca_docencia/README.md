@@ -4,6 +4,12 @@
 
 Este es el punto de entrada de PACA DOCENCIA para `Quantum-AI-for-Queens`. Se mantiene un corpus editorial ligado al **futuro libro académico** `SIGILBOOK · PACA Lecture Notes & Codebooks`; cada archivo conserva su autoría, procedencia y licencia efectiva sin atribuir obras de terceros a JJBV.
 
+### Tutoriales Jupyter
+
+[**Abrir 16 notebooks organizados en `tutorials/paca-docencia-2026/`**](../tutorials/paca-docencia-2026/README.md): cuatro referencias numéricas, nueve actividades y los tres notebooks adicionales `QAOA_DMRG`, `Quimb_DMRG_MPS_TFIM` y `VQE_TFIM`.
+
+Se conservan las rutas originales de `paca_docencia/`; la nueva colección es una copia indexada con procedencia. Los tres uploads están sin salidas guardadas y no se han ejecutado en esta operación.
+
 ## Colecciones
 
 [Ver los 17 notebooks Jupyter desde la portada](../README.md#jupyter-notebooks--start-here) · [Portada web](../site/index.html#jupyter-notebooks).
