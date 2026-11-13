@@ -55,5 +55,16 @@
   "rights_gate": "HOLD_QUNO_RIGHTS_FOR_UNCLEARED_SOURCES",
   "no_implicit_license_grant": true,
   "no_automatic_author_identity_transfer": true,
-  "no_automatic_publication_of_private_source": true
+  "no_automatic_publication_of_private_source": true,
+  "teaching_reuse": {
+    "rightsholder_scope": "JJBV original protected contributions with verified exploitation rights",
+    "by_other_educators": "EXPRESS_ASSET_SCOPED_LICENSE_REQUIRED_UNLESS_EXISTING_GRANT_OR_LAWFUL_EXCEPTION",
+    "commercial_exploitation": "RESERVED_TO_APPLICABLE_RIGHTS_HOLDER_SUBJECT_TO_PREVIOUS_GRANTS",
+    "blanket_creative_commons_grant": false,
+    "permission_not_assumed_from_public_repository": true,
+    "policy_path": "paca_docencia/USO_DOCENTE_BAJO_LICENCIA.md",
+    "existing_mit_apache_gpl_cc_grants_unaffected": true,
+    "statutory_exceptions_unaffected": true,
+    "publisher_contract_pending": true
+  }
 }
