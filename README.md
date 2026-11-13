@@ -7,16 +7,16 @@ Uso para estudiantes y autoaprendizaje: Se autoriza la consulta, descarga y ejec
 
 ## Jupyter notebooks — start here
 
-**17 directly linked notebooks on `main`:** 4 numerical reference notebooks, 9 guided PACA DOCENCIA activity notebooks, and 4 existing course notebooks. All paths below point to real `.ipynb` files in this repository.
+**20 directly linked notebooks on `main`:** 4 numerical reference notebooks, 9 guided PACA DOCENCIA activity notebooks, and 4 existing course notebooks. All paths below point to real `.ipynb` files in this repository.
 
 ### Numerical reference notebooks · 4
 
 | Notebook | Paired lecture note |
 |---|---|
-| [QAOA / MaxCut](paca_docencia/codebooks_20261113/codebooks/01_qaoa_maxcut_baseline.ipynb) | [Read note](paca_docencia/codebooks_20261113/lecture_notes/01_qaoa_maxcut_baseline.md) |
-| [TFIM exact reference](paca_docencia/codebooks_20261113/codebooks/02_tfim_exact_reference.ipynb) | [Read note](paca_docencia/codebooks_20261113/lecture_notes/02_tfim_exact_reference.md) |
-| [MPS / SVD compression](paca_docencia/codebooks_20261113/codebooks/03_mps_svd_compression.ipynb) | [Read note](paca_docencia/codebooks_20261113/lecture_notes/03_mps_svd_compression.md) |
-| [HHL classical control](paca_docencia/codebooks_20261113/codebooks/04_hhl_classical_control.ipynb) | [Read note](paca_docencia/codebooks_20261113/lecture_notes/04_hhl_classical_control.md) |
+| [QAOA / MaxCut](tutorials/paca-docencia-2026/reference/01_qaoa_maxcut_baseline.ipynb) | [Read note](paca_docencia/codebooks_20261113/lecture_notes/01_qaoa_maxcut_baseline.md) |
+| [TFIM exact reference](tutorials/paca-docencia-2026/reference/02_tfim_exact_reference.ipynb) | [Read note](paca_docencia/codebooks_20261113/lecture_notes/02_tfim_exact_reference.md) |
+| [MPS / SVD compression](tutorials/paca-docencia-2026/reference/03_mps_svd_compression.ipynb) | [Read note](paca_docencia/codebooks_20261113/lecture_notes/03_mps_svd_compression.md) |
+| [HHL classical control](tutorials/paca-docencia-2026/reference/04_hhl_classical_control.ipynb) | [Read note](paca_docencia/codebooks_20261113/lecture_notes/04_hhl_classical_control.md) |
 
 ### PACA DOCENCIA guided Jupyter activities · 9
 
@@ -24,15 +24,25 @@ These **nine notebooks are exercise scaffolds**, not completed computational sol
 
 | Unit | Notebook | Lecture note |
 |---|---|---|
-| 01 QAOA / MaxCut | [Open Jupyter](paca_docencia/paca_ppl_lecture_codebooks_20261113/codebooks/01.ipynb) | [Read note](paca_docencia/paca_ppl_lecture_codebooks_20261113/lecture_notes/01.md) |
-| 02 VQE / 1D TFIM | [Open Jupyter](paca_docencia/paca_ppl_lecture_codebooks_20261113/codebooks/02.ipynb) | [Read note](paca_docencia/paca_ppl_lecture_codebooks_20261113/lecture_notes/02.md) |
-| 03 Tensor-network circuits | [Open Jupyter](paca_docencia/paca_ppl_lecture_codebooks_20261113/codebooks/03.ipynb) | [Read note](paca_docencia/paca_ppl_lecture_codebooks_20261113/lecture_notes/03.md) |
-| 04 Quimb DMRG / TFIM | [Open Jupyter](paca_docencia/paca_ppl_lecture_codebooks_20261113/codebooks/04.ipynb) | [Read note](paca_docencia/paca_ppl_lecture_codebooks_20261113/lecture_notes/04.md) |
-| 05 Variational depth / AAVQE | [Open Jupyter](paca_docencia/paca_ppl_lecture_codebooks_20261113/codebooks/05.ipynb) | [Read note](paca_docencia/paca_ppl_lecture_codebooks_20261113/lecture_notes/05.md) |
-| 06 QTT image classification | [Open Jupyter](paca_docencia/paca_ppl_lecture_codebooks_20261113/codebooks/06.ipynb) | [Read note](paca_docencia/paca_ppl_lecture_codebooks_20261113/lecture_notes/06.md) |
-| 07 QUANTIC MPS / regression | [Open Jupyter](paca_docencia/paca_ppl_lecture_codebooks_20261113/codebooks/07.ipynb) | [Read note](paca_docencia/paca_ppl_lecture_codebooks_20261113/lecture_notes/07.md) |
-| 08 MPO / DMRG / QUBO | [Open Jupyter](paca_docencia/paca_ppl_lecture_codebooks_20261113/codebooks/08.ipynb) | [Read note](paca_docencia/paca_ppl_lecture_codebooks_20261113/lecture_notes/08.md) |
-| 09 QUBO regression: critical reading | [Open Jupyter](paca_docencia/paca_ppl_lecture_codebooks_20261113/codebooks/09.ipynb) | [Read note](paca_docencia/paca_ppl_lecture_codebooks_20261113/lecture_notes/09.md) |
+| 01 QAOA / MaxCut | [Open Jupyter](tutorials/paca-docencia-2026/activities/01_qaoa_maxcut.ipynb) | [Read note](paca_docencia/paca_ppl_lecture_codebooks_20261113/lecture_notes/01.md) |
+| 02 VQE / 1D TFIM | [Open Jupyter](tutorials/paca-docencia-2026/activities/02_vqe_tfim.ipynb) | [Read note](paca_docencia/paca_ppl_lecture_codebooks_20261113/lecture_notes/02.md) |
+| 03 Tensor-network circuits | [Open Jupyter](tutorials/paca-docencia-2026/activities/03_tensor_network_circuits.ipynb) | [Read note](paca_docencia/paca_ppl_lecture_codebooks_20261113/lecture_notes/03.md) |
+| 04 Quimb DMRG / TFIM | [Open Jupyter](tutorials/paca-docencia-2026/activities/04_dmrg_quimb.ipynb) | [Read note](paca_docencia/paca_ppl_lecture_codebooks_20261113/lecture_notes/04.md) |
+| 05 Variational depth / AAVQE | [Open Jupyter](tutorials/paca-docencia-2026/activities/05_depth_aavqe.ipynb) | [Read note](paca_docencia/paca_ppl_lecture_codebooks_20261113/lecture_notes/05.md) |
+| 06 QTT image classification | [Open Jupyter](tutorials/paca-docencia-2026/activities/06_quantics_classification.ipynb) | [Read note](paca_docencia/paca_ppl_lecture_codebooks_20261113/lecture_notes/06.md) |
+| 07 QUANTIC MPS / regression | [Open Jupyter](tutorials/paca-docencia-2026/activities/07_quantic_mps_regression.ipynb) | [Read note](paca_docencia/paca_ppl_lecture_codebooks_20261113/lecture_notes/07.md) |
+| 08 MPO / DMRG / QUBO | [Open Jupyter](tutorials/paca-docencia-2026/activities/08_mpo_dmrg_qubo.ipynb) | [Read note](paca_docencia/paca_ppl_lecture_codebooks_20261113/lecture_notes/08.md) |
+| 09 QUBO regression: critical reading | [Open Jupyter](tutorials/paca-docencia-2026/activities/09_qubo_regression.ipynb) | [Read note](paca_docencia/paca_ppl_lecture_codebooks_20261113/lecture_notes/09.md) |
+
+### Uploaded PACA DOCENCIA Jupyter notebooks · 3
+
+These are **newly supplied notebook copies**: their code/markdown cells were kept and stored execution outputs removed. They are not independently executed or scientifically certified.
+
+- [QAOA + DMRG notebook](tutorials/paca-docencia-2026/uploads/QAOA_DMRG.ipynb)
+- [Quimb DMRG / MPS / TFIM notebook](tutorials/paca-docencia-2026/uploads/Quimb_DMRG_MPS_TFIM.ipynb)
+- [VQE / TFIM notebook](tutorials/paca-docencia-2026/uploads/VQE_TFIM.ipynb)
+
+See the [consolidated `tutorials/` index](tutorials/paca-docencia-2026/README.md) for the complete manifest, original source SHA-256 values, provenance, and rights notices.
 
 ### Existing course notebooks · 4
 
@@ -88,7 +98,7 @@ Typed navigation sources:
 
 ## Start here
 
-- [**Open all 17 Jupyter notebooks**](#jupyter-notebooks--start-here) · 4 references + 9 activities + 4 course notebooks
+- [**Open all 20 Jupyter notebooks**](#jupyter-notebooks--start-here) · 4 references + 9 activities + 4 course notebooks
 
 - [PACADOC](PACADOC.md) — student first-use guide
 - [Web/WML landing](site/index.html) — course map and codebook browser
