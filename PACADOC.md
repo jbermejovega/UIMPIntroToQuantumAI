@@ -2,77 +2,172 @@
 
 ```yaml
 capsule:
-  id: PACADOC_UIMP_INTRO_TO_QUANTUM_AI_V1_0_0
+  id: PACADOC_UIMP_INTRO_TO_QUANTUM_AI_2026_V1
   type: first_user_student_landing_document
-
   status:
-    canonical: true
-    normalized: true
-    stable_release: true
-    release_number: "1.0.0"
+    candidate: true
     student_facing: true
-    UIMP_ready: true
-    safety_first: true
     accessibility_first: true
     reproducibility_first: true
-    no_open_branch: true
-
+    hosted_ci_claimed: false
+    physics_certification_claimed: false
   repository:
     owner: jbermejovega
     name: UIMPIntroToQuantumAI
-    default_branch: main
-
-  audience:
-    - UIMP students
-    - first-time quantum AI learners
-    - teaching assistants
-    - course reviewers
-
-  kernel:
-    - PACA_CORE
-    - PACA_PDG
-    - SIGIL
-    - UAP
-    - TRACE
-    - JUPYTER
-    - PYTHON
-    - QISKIT
+    target_branch: main
+  public_private_boundary:
+    zero_source: jbermejovega/sigilbook
+    public_course_projection: jbermejovega/UIMPIntroToQuantumAI
+    authority_transport: false
+    private_source_publication: false
 ```
 
-## 1. What this repository is
+## 1. First path
 
-This repository is a first-user educational repository for an introduction to Quantum Artificial Intelligence.
-
-It contains teaching material, setup instructions, notebooks, exercises, and supporting resources for students who may be using different operating systems and Python environments.
-
-The normalized rule is:
-
-```text
-many machines
-many environments
-one replay-stable learning path
-```
-
-## 2. First-user path
-
-Start here:
+For the 2026 QML practical:
 
 ```text
 1. Read README.md.
-2. Install Python or Miniconda.
-3. Create a clean course environment.
-4. Install Jupyter and required packages.
-5. Open notebooks in order.
-6. Run cells slowly.
-7. Save errors and fixes.
-8. Ask for help with the exact error message.
+2. Open tutorials/practica-2026-ising-duality/README.md.
+3. Create a clean Python environment.
+4. Install requirements.txt.
+5. Open ising_duality_codebook.ipynb.
+6. Run cells in order.
+7. Change one parameter at a time.
+8. Record outputs, errors and interpretation.
 ```
 
-## 3. Student safety rule
+The web/WML projection is available at `site/index.html`.
 
-Do not debug by changing many things at once.
+## 2. Minimal install
 
-Use:
+```bash
+git clone https://github.com/jbermejovega/UIMPIntroToQuantumAI.git
+cd UIMPIntroToQuantumAI/tutorials/practica-2026-ising-duality
+python -m venv .venv
+source .venv/bin/activate
+python -m pip install -r requirements.txt
+jupyter lab ising_duality_codebook.ipynb
+```
+
+Windows PowerShell activation:
+
+```powershell
+.venv\Scripts\Activate.ps1
+```
+
+Optional public semantic/replay layer:
+
+```bash
+python -m pip install sigil4py
+```
+
+The scientific notebook remains executable without private SIGILBOOK access.
+
+## 3. Course map
+
+### Juani
+
+General introduction to AI:
+
+- what is learning?
+- supervised vs unsupervised learning
+- trainability and generalization
+- automata / Ising model
+- current topics
+
+Quantum Machine Learning:
+
+- quantum advantage
+- re-quantization / representations
+- quantum-inspired methods
+- quantum optimization
+- trainability and limitations
+
+Practice:
+
+```text
+Ising
+-> Onsager/Kramers-Wannier
+-> Hopfield
+-> quantum Ising
+-> topology
+-> electric/magnetic duality comparison
+-> contextual kernel
+-> localization
+-> oscillators
+-> swarmalators
+```
+
+### Daniel / David / Roberta
+
+The complete shared syllabus is maintained in `README.md` and in the CCMS
+manifest.
+
+## 4. Textbook/codebook rule
+
+The standard public codebook form is:
+
+```text
+chapter
+-> mathematical kernel
+-> observables
+-> executable model
+-> experiment
+-> interpretation
+-> reproducibility witness
+-> exercises
+```
+
+Typed pedagogical vocabulary:
+
+```text
+SIGIL[chapter]
+PLURALTYPE[representations]
+QUNO[coexisting alternatives]
+CODEBOOK[executable witness]
+```
+
+Plurality does not imply identity collapse.
+
+## 5. Physics boundary
+
+The codebook explicitly keeps these distinctions:
+
+```text
+Kramers-Wannier duality != Metropolis update rule
+Hopfield != Onsager square-lattice Ising
+Anderson != Aubry-André != Mott/Higgs localization
+Kuramoto != circle-map mode locking
+Kuramoto != swarmalator dynamics
+Montonen-Olive comparison != simulation of N=4 SYM
+```
+
+A typed map or shared interface is not by itself a physical equivalence theorem.
+
+## 6. CCMS / KUIR
+
+The public teaching source is:
+
+`ccms/paca_docencia_superlattice_v1.json`
+
+The architectural explanation is:
+
+`docs/PACA_DOCENCIA_CCMS_KUIR_FACET_V1.md`
+
+Local validation:
+
+```bash
+python tools/koko_docencia.py preworkflow
+```
+
+Core tool facets:
+
+```text
+CLICK · CLIT · ZELDA · POLES · KIT · QIT · GIT · JAURIA · BROWSER · DB
+```
+
+## 7. Replay rule
 
 ```text
 one error
@@ -81,135 +176,47 @@ one rerun
 one note
 ```
 
-If something fails, record:
+Minimum record:
+
+```yaml
+replay_record:
+  repository: UIMPIntroToQuantumAI
+  commit: "<git sha>"
+  notebook: tutorials/practica-2026-ising-duality/ising_duality_codebook.ipynb
+  python_version: "..."
+  package_versions: "..."
+  random_seed: "..."
+  parameters: "..."
+  status: pass_or_error
+```
+
+## 8. Historical material
+
+The full earlier course guide has been restored at:
+
+`docs/legacy/README_2025_FULL.md`
+
+Existing HHL/data-fitting notebooks remain under `tutorials/`.
+
+## 9. Student debugging rule
+
+Do not alter many dependencies at once. Record:
 
 ```text
 operating system
 Python version
 environment name
-notebook name
-cell number
-error message
-last command executed
-```
-
-## 4. Accessibility rule
-
-Learning material should remain readable under student conditions:
-
-- small screens;
-- fatigue;
-- multilingual reading;
-- unstable internet;
-- first-time terminal use;
-- anxiety around programming errors.
-
-Operational writing rule:
-
-```text
-one step per line
-one command per block
-no hidden assumptions
-```
-
-## 5. Reproducibility rule
-
-A notebook result is considered course-stable only if the execution path can be explained and replayed.
-
-```text
-no replay → no certified result
-```
-
-Minimum reproducibility record:
-
-```yaml
-replay_record:
-  repository: UIMPIntroToQuantumAI
-  notebook: path/to/notebook.ipynb
-  environment: course_environment_name
-  python_version: "..."
-  package_manager: conda_or_pip
-  status: pass_or_error
-```
-
-## 6. PACA/PACAPDG interpretation
-
-Different systems may render the same educational object differently:
-
-- Linux terminal;
-- macOS terminal;
-- Windows PowerShell;
-- VS Code;
-- JupyterLab;
-- browser notebook.
-
-The invariant is:
-
-```text
-Π(quo(r_i(X))) = Π(quo(r_j(X)))
-```
-
-Meaning:
-
-```text
-different student environments
-same learning identity
-```
-
-## 7. Course conduct
-
-Allowed:
-
-- ask for help early;
-- share error messages;
-- compare outputs;
-- document fixes;
-- rerun notebooks;
-- use accessible settings.
-
-Forbidden:
-
-- hiding errors;
-- copying outputs without running or understanding the path;
-- changing many dependencies without recording changes;
-- presenting non-reproducible output as final.
-
-## 8. Minimal command discipline
-
-Use commands in small blocks.
-
-```bash
-python --version
-```
-
-```bash
-conda --version
-```
-
-```bash
-jupyter --version
-```
-
-Do not paste long unknown command chains without reading them.
-
-## 9. Teaching assistant checklist
-
-```text
-student can open terminal
-student can identify environment
-student can launch Jupyter
-student can run first notebook
-student can copy exact error
-student can reset/recreate environment if needed
+notebook
+cell
+parameters
+exact error
+last successful step
 ```
 
 ## 10. Final law
 
 ```text
-quantum AI learning is valid when the student can replay the path,
-not when the notebook merely appears to have output.
+no replay -> no certified result
+presentation != certification
+public projection != private authority
 ```
-
-## 11. Final statement
-
-This repository is PACADOC-normalized for first users: it prioritizes clear entry, accessibility, safe debugging, reproducible notebooks, and traceable learning.

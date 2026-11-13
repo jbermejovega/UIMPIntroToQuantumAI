@@ -1,0 +1,146 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//PACA DOCENCIA//UIMP QML//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:uimp-qml-01@uimpintrotoquantumai
+DTSTART;TZID=Europe/Madrid:20261023T160000
+DTEND;TZID=Europe/Madrid:20261023T180000
+SUMMARY:Machine Learning — Theory class (prerecorded video) — Juani Bermejo
+DESCRIPTION:PACA Agenda public course projection
+END:VEVENT
+BEGIN:VEVENT
+UID:uimp-qml-02@uimpintrotoquantumai
+DTSTART;TZID=Europe/Madrid:20261030T160000
+DTEND;TZID=Europe/Madrid:20261030T180000
+SUMMARY:Machine Learning — Theory class (prerecorded video) — Juani Bermejo
+DESCRIPTION:PACA Agenda public course projection
+END:VEVENT
+BEGIN:VEVENT
+UID:uimp-qml-03@uimpintrotoquantumai
+DTSTART;TZID=Europe/Madrid:20261104T190000
+DTEND;TZID=Europe/Madrid:20261104T200000
+SUMMARY:Machine Learning — Tutoring — Juani Bermejo
+DESCRIPTION:PACA Agenda public course projection
+END:VEVENT
+BEGIN:VEVENT
+UID:uimp-qml-04@uimpintrotoquantumai
+DTSTART;TZID=Europe/Madrid:20261106T160000
+DTEND;TZID=Europe/Madrid:20261106T180000
+SUMMARY:Machine Learning — Practical class (streaming) — Juani Bermejo
+DESCRIPTION:PACA Agenda public course projection
+END:VEVENT
+BEGIN:VEVENT
+UID:uimp-qml-05@uimpintrotoquantumai
+DTSTART;TZID=Europe/Madrid:20261113T160000
+DTEND;TZID=Europe/Madrid:20261113T180000
+SUMMARY:Machine Learning — Theory class (prerecorded video) — Daniel Manzano
+DESCRIPTION:PACA Agenda public course projection
+END:VEVENT
+BEGIN:VEVENT
+UID:uimp-qml-06@uimpintrotoquantumai
+DTSTART;TZID=Europe/Madrid:20261118T190000
+DTEND;TZID=Europe/Madrid:20261118T200000
+SUMMARY:Machine Learning — Theory class (prerecorded video) — Daniel Manzano
+DESCRIPTION:PACA Agenda public course projection
+END:VEVENT
+BEGIN:VEVENT
+UID:uimp-qml-07@uimpintrotoquantumai
+DTSTART;TZID=Europe/Madrid:20261120T160000
+DTEND;TZID=Europe/Madrid:20261120T170000
+SUMMARY:Machine Learning — Tutoring — Daniel Manzano
+DESCRIPTION:PACA Agenda public course projection
+END:VEVENT
+BEGIN:VEVENT
+UID:uimp-qml-08@uimpintrotoquantumai
+DTSTART;TZID=Europe/Madrid:20261120T170000
+DTEND;TZID=Europe/Madrid:20261120T180000
+SUMMARY:Machine Learning — Theory class (prerecorded video) — Daniel Manzano
+DESCRIPTION:PACA Agenda public course projection
+END:VEVENT
+BEGIN:VEVENT
+UID:uimp-qml-09@uimpintrotoquantumai
+DTSTART;TZID=Europe/Madrid:20261127T160000
+DTEND;TZID=Europe/Madrid:20261127T170000
+SUMMARY:Machine Learning — Tutoring — David Zueco
+DESCRIPTION:PACA Agenda public course projection
+END:VEVENT
+BEGIN:VEVENT
+UID:uimp-qml-10@uimpintrotoquantumai
+DTSTART;TZID=Europe/Madrid:20261127T170000
+DTEND;TZID=Europe/Madrid:20261127T180000
+SUMMARY:Machine Learning — Theory class (prerecorded video) — David Zueco
+DESCRIPTION:PACA Agenda public course projection
+END:VEVENT
+BEGIN:VEVENT
+UID:uimp-qml-11@uimpintrotoquantumai
+DTSTART;TZID=Europe/Madrid:20261202T190000
+DTEND;TZID=Europe/Madrid:20261202T200000
+SUMMARY:Machine Learning — Theory class (prerecorded video) — David Zueco
+DESCRIPTION:PACA Agenda public course projection
+END:VEVENT
+BEGIN:VEVENT
+UID:uimp-qml-12@uimpintrotoquantumai
+DTSTART;TZID=Europe/Madrid:20261204T160000
+DTEND;TZID=Europe/Madrid:20261204T180000
+SUMMARY:Machine Learning — Practical class (streaming) — Daniel Manzano
+DESCRIPTION:PACA Agenda public course projection
+END:VEVENT
+BEGIN:VEVENT
+UID:uimp-qml-13@uimpintrotoquantumai
+DTSTART;TZID=Europe/Madrid:20261211T160000
+DTEND;TZID=Europe/Madrid:20261211T180000
+SUMMARY:Machine Learning — Theory class (prerecorded video) — David Zueco
+DESCRIPTION:PACA Agenda public course projection
+END:VEVENT
+BEGIN:VEVENT
+UID:uimp-qml-14@uimpintrotoquantumai
+DTSTART;TZID=Europe/Madrid:20261216T190000
+DTEND;TZID=Europe/Madrid:20261216T200000
+SUMMARY:Machine Learning — Theory class (prerecorded video) — Roberta Zambrini
+DESCRIPTION:PACA Agenda public course projection
+END:VEVENT
+BEGIN:VEVENT
+UID:uimp-qml-15@uimpintrotoquantumai
+DTSTART;TZID=Europe/Madrid:20261218T160000
+DTEND;TZID=Europe/Madrid:20261218T180000
+SUMMARY:Machine Learning — Practical class (streaming) — David Zueco
+DESCRIPTION:PACA Agenda public course projection
+END:VEVENT
+BEGIN:VEVENT
+UID:uimp-qml-16@uimpintrotoquantumai
+DTSTART;TZID=Europe/Madrid:20270108T160000
+DTEND;TZID=Europe/Madrid:20270108T180000
+SUMMARY:Machine Learning — Theory class (prerecorded video) — Roberta Zambrini
+DESCRIPTION:PACA Agenda public course projection
+END:VEVENT
+BEGIN:VEVENT
+UID:uimp-qml-17@uimpintrotoquantumai
+DTSTART;TZID=Europe/Madrid:20270115T160000
+DTEND;TZID=Europe/Madrid:20270115T170000
+SUMMARY:Machine Learning — Tutoring — Roberta Zambrini
+DESCRIPTION:PACA Agenda public course projection
+END:VEVENT
+BEGIN:VEVENT
+UID:uimp-qml-18@uimpintrotoquantumai
+DTSTART;TZID=Europe/Madrid:20270115T170000
+DTEND;TZID=Europe/Madrid:20270115T180000
+SUMMARY:Machine Learning — Theory class (prerecorded video) — Roberta Zambrini
+DESCRIPTION:PACA Agenda public course projection
+END:VEVENT
+BEGIN:VEVENT
+UID:uimp-qml-19@uimpintrotoquantumai
+DTSTART;TZID=Europe/Madrid:20270122T160000
+DTEND;TZID=Europe/Madrid:20270122T180000
+SUMMARY:Machine Learning — Practical class (streaming) — Roberta Zambrini
+DESCRIPTION:PACA Agenda public course projection
+END:VEVENT
+BEGIN:VEVENT
+UID:uimp-qml-20@uimpintrotoquantumai
+DTSTART;TZID=Europe/Madrid:20270129T160000
+DTEND;TZID=Europe/Madrid:20270129T180000
+SUMMARY:Machine Learning — TBD — TBD
+DESCRIPTION:PACA Agenda public course projection
+END:VEVENT
+END:VCALENDAR
