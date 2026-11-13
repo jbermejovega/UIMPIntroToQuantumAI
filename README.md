@@ -1,10 +1,9 @@
+ [2026] JJBV. Todos los derechos reservados.
+Uso para estudiantes y autoaprendizaje: Se autoriza la consulta, descarga y ejecución de estos materiales exclusivamente para el estudio personal y el aprendizaje individual. Uso docente e institucional: Queda prohibida la reproducción, distribución, comunicación pública, proyección sistemática en aula o incorporación sustancial de estos materiales (textos, figuras, presentaciones o notebooks) en asignaturas, cursos o programas impartidos por terceros sin licencia o autorización expresa por escrito del autor, fuera de los límites legales del derecho de cita. Contacto para licencias docentes: [jbermejovega@go.ugr.es].
+
 # Introduction to Quantum Artificial Intelligence
 
-**Jara Juana Bermejo Vega · UIMP Quantum Machine Learning**
-
-This repository is the public teaching/release surface for the course. The
-private SIGILBOOK metaproject is not published by implication; only typed
-teaching projections and provenance references are exposed here.
+**Jara Juana Bermejo Vega**
 
 ## 1 Table of Contents
 
