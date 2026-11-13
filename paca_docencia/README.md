@@ -14,6 +14,13 @@ Este es el punto de entrada de PACA DOCENCIA para `Quantum-AI-for-Queens`. Se ma
 | [PYKARA/SWALLOW Pydantic 2](paca_ppl_lecture_codebooks_20261113/PYKARA_SWALLOW.md) | Manifestación tipada, controles estructurales y línea Monty | Plan, no ejecución Monty |
 | [Tutoriales históricos](../tutorials) | Material anterior del curso | `main`; preservado |
 
+
+### Condición para otros docentes
+
+**El uso de las contribuciones docentes originales protegidas de JJBV por otros profesores, centros o formadores requiere una licencia de uso expresa y específica**, salvo permisos preexistentes o excepciones legales aplicables. La explotación comercial queda reservada a quienes ostenten los derechos de explotación. No se concede licencia Creative Commons general.
+
+[Política de uso docente bajo licencia](USO_DOCENTE_BAJO_LICENCIA.md) · [Copyright y libro de texto](COPYRIGHT_TEXTBOOK_QUNO.md).
+
 ## Copyright y publicación
 
 - [Aviso de derechos QUNO y futura publicación](COPYRIGHT_TEXTBOOK_QUNO.md).
