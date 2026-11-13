@@ -57,9 +57,8 @@ Typed navigation sources:
 - [PACA DOCENCIA CCMS/KUIR facet](docs/PACA_DOCENCIA_CCMS_KUIR_FACET_V1.md)
 - [Full 2025 course guide](docs/legacy/README_2025_FULL.md) — restored historical setup/tutorial documentation
 
-## 2026 syllabus
 
-### General introduction to AI — Juani
+### General introduction to AI
 
 - what is learning?
 - paradigms: supervised vs unsupervised learning
@@ -68,16 +67,6 @@ Typed navigation sources:
 - current topics in ML and QML
 
 Campus-ready description: [General introduction to AI / ML](docs/teaching/JUANI_QML_LECTURE_NOTES_ABRIDGED_2026.md#campus-description--general-introduction-to-ai--ml)
-
-### Classical models — Daniel / David
-
-- PCA — Daniel
-- trees and random forests — Daniel
-- neural networks — Daniel
-- k-means and clustering — David, 1h
-- support vector machines — David, 1h
-
-### Quantum Machine Learning — Juani
 
 - quantum advantage
 - re-quantization / quantum representations
@@ -93,26 +82,6 @@ They are synchronized only for
 [TFG/TFM/PhD projects](docs/teaching/RESEARCH_SYNC_TFG_TFM_PHD_V1.md).
 
 ### Quantum Machine Learning Models
-
-- HHL / linear fitting — David, 1h
-- quantum kernels — David, 1h
-- ML for and with quantum — Roberta, 1h
-- quantum perceptron — Roberta, 1h
-- quantum associative memory — Roberta, 1h
-- quantum reservoir computing — Roberta, 2h
-- hands-on lecture — 2h
-
-## Exercises
-
-- **Juani:** contextual kernel — classical/quantum Ising and duality codebook
-- **Daniel:** neural networks for entanglement detection (classical)
-- **David:** SVM classification with classical and PennyLane quantum feature spaces
-- **Roberta:** critical assessment of QNN design
-
-## 2026 practice
-
-The Juani practice is one executable textbook/codebook for Physics,
-Mathematics and Computer Science:
 
 ```text
 Ising / Metropolis
