@@ -7,7 +7,7 @@ KOKO3_MONTY_EFFECT_GATE_V1 for authority boundaries.
 """
 from __future__ import annotations
 
-from enum import StrEnum
+from enum import Enum
 from hashlib import sha256
 import json
 from pathlib import Path
@@ -16,7 +16,7 @@ from typing import Literal
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 
 
-class Status(StrEnum):
+class Status(str, Enum):
     SOURCE_PLAN = "SOURCE_PLAN"
     HOLD = "HOLD"
 
